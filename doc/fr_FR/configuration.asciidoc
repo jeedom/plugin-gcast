@@ -1,6 +1,7 @@
 == Configuration du plugin
 
 Après téléchargement du plugin il vous faut l'activer et renseigner l'IP de votre Google Assistant.
+Ce plugin permet de faire parler un google cast et de contrôler son volume. Il permet aussi d'agir comme un pont pour les interactions et Google Home.
 
 == Configuration de IFTTT pour le retour TTS
 
