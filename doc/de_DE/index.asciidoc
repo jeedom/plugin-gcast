@@ -1,12 +1,12 @@
 == Gcast
 
-=== Description
-Le plugin Gcast permet d’établir un lien entre votre Google Assistant et Jeedom. 
-Il sera possible d’utiliser votre Google Home / Google Mini pour faire du TTS ou interagir avec Jeedom via les interactions 
+=== Beschreibung
+Mit dem Gcast-Plugin können Sie eine Verbindung zwischen Ihrem Google-Assistenten und Jeedom herstellen. 
+Es ist möglich, mit Google-Home/Google-Mini TTS zu erstellen oder durch Interaktionen mit Jeedom zu interagieren. 
 
 '''
-=== Configuration
+=== Konfiguration
 include::configuration.asciidoc[]
 '''
-=== Changelog
+=== Änderungsprotokoll
 include::changelog.asciidoc[]
