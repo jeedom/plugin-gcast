@@ -47,3 +47,4 @@ image:../images/appliance05.png[scénario avec GCast]
 
 Il est également possible d'interagir avec Jeedom depuis un équipement GCast (comme Google Home). Il faut au préalable avoir configuré le service IFTT pour interagir avec Jeedom : voir link:configuration.asciidoc[configuration].
 
+Il faut ensuite créer des interactions dans le menu "Interactions" de Jeedom.
