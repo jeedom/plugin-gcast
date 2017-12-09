@@ -4,7 +4,7 @@ Pour gérer les équipements, se rendre dans le menu dans "Plugins" -> "Communic
 
 image:../images/appliance01.png[Menu du plugin GCast]
 
-Ci-dessous un exemple d’une page du GCast :
+Ci-dessous un exemple d’une page listant les équipements GCast :
 
 image:../images/appliance02.png[Liste des équipements GCast]
 
@@ -30,10 +30,20 @@ Pour chaque équipement, les commandes suivantes sont créées :
  
 image:../images/appliance03.png[Liste des commandes d'un équipement GCast]
 
-=== Affichage de l'équipement
+=== Affichage de l'équipement GCast
 
 Si vous avez coché la case "Visible" de l'équipement, une tuile comme celle-là est visible dans le dashboard :
 
  
 image:../images/appliance04.png[Tuile d'un équipement GCast]
+
+=== Faire parler un équipement GCast
+
+Pour faire parler un équipement GCast depuis le dashboard ou dans un scénario, il suffit d'utiliser la commande "Parler" en fournissant le texte à faire dire à l'équipement dans la variable "Phrase" :
+
+image:../images/appliance05.png[scénario avec GCast]
+
+=== Interagir avec un équipement GCast
+
+Il est également possible d'interagir avec Jeedom depuis un équipement GCast (comme Google Home). Il faut au préalable avoir configuré le service IFTT pour interagir avec Jeedom : voir link:configuration.asciidoc[configuration].
 
