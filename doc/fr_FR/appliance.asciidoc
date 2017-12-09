@@ -1,0 +1,39 @@
+=== Gestion des équipements
+
+Pour gérer les équipements, se rendre dans le menu dans "Plugins" -> "Communication" -> "GCast".
+
+image:../images/appliance01.png[Menu du plugin GCast]
+
+Ci-dessous un exemple d’une page du GCast :
+
+image:../images/appliance02.png[Liste des équipements GCast]
+
+=== Ajout d'un nouvel équipement
+
+Pour ajouter un nouvel équipement, se rendre dans le menu dans "Plugins" -> "Communication" -> "GCast", puis cliquer sur "Ajouter". Pour ce nouvel équipement, il faut ensuite fournir un nom et renseigner l'IP de votre Google Assistant. Il est également possible :
+
+ * de choisir le moteur TTS (Text To Speech = moteur de synthèse vocale) entre Google ou PicoTTS.
+ * de choisir la langue de la synthèse vocale
+ 
+Cliquer sur le bouton "Sauvegarder" pour sauver la configuration de votre équipement.
+ 
+image:../images/configuration01.png[Configuration d'un nouvel équipement]
+
+*NB : Il est impératif de fixer l'adresse IP de votre équipement Google (Bail Statique) au niveau de votre équipement réseau ou de votre Box de fournisseur Internet car le plugin repose sur une IP fixe.*
+
+Pour chaque équipement, les commandes suivantes sont créées :
+
+ * Parle : Texte pour faire parler l'équipement
+ * Vol+ : Augmenter le volume d'un équipement
+ * Vol- : Baisser le volume d'un équipement
+ * Volume : Réglage du volume de l'équipement
+ 
+image:../images/appliance03.png[Liste des commandes d'un équipement GCast]
+
+=== Affichage de l'équipement
+
+Si vous avez coché la case "Visible" de l'équipement, une tuile comme celle-là est visible dans le dashboard :
+
+ 
+image:../images/appliance04.png[Tuile d'un équipement GCast]
+

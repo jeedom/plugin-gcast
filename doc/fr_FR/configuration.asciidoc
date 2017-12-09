@@ -1,9 +1,12 @@
-== Configuration du plugin
+=== Configuration du plugin
 
-Après téléchargement du plugin il vous faut l'activer et renseigner l'IP de votre Google Assistant.
-Ce plugin permet de faire parler un google cast et de contrôler son volume. Il permet aussi d'agir comme un pont pour les interactions et Google Home.
+Après le téléchargement du plugin, il faut juste l'activer en cliquant sur le bouton "Activer".
 
-== Configuration de IFTTT pour le retour TTS
+image:../images/configuration02.png[]
+ 
+ Il est également  possible de changer le niveau de log du plugin dans la boîte "Log" afin de debugguer le plugin Gcast (niveau de log "Debug") ou obtenir plus d'information sur le fonctionnement du plugin (niveau de log "Info").
+
+=== Configuration de IFTTT pour le retour TTS
 
 Sans IFTTT, votre Google Assistant ne pourras pas echanger avec Jeedom.
 
