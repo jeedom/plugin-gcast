@@ -2,17 +2,17 @@ Gcast
 =====
 
 Description 
------------
+===========
 
 Le plugin Gcast permet d’établir un lien entre votre Google Assistant et
 Jeedom. Il sera possible d’utiliser votre Google Home / Google Mini pour
 faire du TTS ou interagir avec Jeedom via les interactions
 
 Configuration 
--------------
+=============
 
 Configuration du plugin 
-=======================
+-----------------------
 
 Après téléchargement du plugin il vous faut l’activer et renseigner l’IP
 de votre Google Assistant. Ce plugin permet de faire parler un google
@@ -20,9 +20,9 @@ cast et de contrôler son volume. Il permet aussi d’agir comme un pont
 pour les interactions et Google Home.
 
 Configuration de IFTTT pour le retour TTS 
-=========================================
+-----------------------------------------
 
-Sans IFTTT, votre Google Assistant ne pourras pas echanger avec Jeedom.
+Sans IFTTT, votre Google Assistant ne pourra pas echanger avec Jeedom.
 
 **Voici les quelques étapes de configuration :**
 
@@ -53,7 +53,7 @@ Sans IFTTT, votre Google Assistant ne pourras pas echanger avec Jeedom.
 
     > **Tip**
     >
-    > Ici il s’agit de la phrase que votre Google Assistant va repondre
+    > Ici il s’agit de la phrase que votre Google Assistant va répondre
     > avant qu’il traite votre demande
 
 -   **Language** : French
@@ -71,8 +71,8 @@ Sans IFTTT, votre Google Assistant ne pourras pas echanger avec Jeedom.
     > **Tip**
     >
     > L’url de retour doit être modifiée : ***ID\_EQUIPEMENT*** doit
-    > être remplacer par l’ID de votre Google Assistant (Cliquer sur
-    > "Configuration avancé" sur la page de votre équipement pour
+    > être remplacé par l’ID de votre Google Assistant (Cliquez sur
+    > "Configuration avancée" sur la page de votre équipement pour
     > connaitre l’ID) et *query=XXXX* par query={{TextField}}
 
     > **Important**
@@ -86,7 +86,7 @@ Sans IFTTT, votre Google Assistant ne pourras pas echanger avec Jeedom.
 
 -   **Body** : {{TextField}}
 
-Il ne reste plus qu’a cliquer sur "Save" et profiter de vos intéractions
+Il ne reste plus qu’à cliquer sur "Save" et profiter de vos intéractions
 entre Google Assistant et Jeedom !
 
 L’utilisation de ASK est même possible ''' === Changelog Changelog
