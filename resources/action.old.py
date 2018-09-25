@@ -67,7 +67,16 @@ def parle():
             os.system('pico2wave -l '+sys.argv[5]+' -w '+filename+ ' "' +sys.argv[3]+ '"')
             song = AudioSegment.from_wav(filename)
         elif sys.argv[6]== 'ttswebserver':
-			song = AudioSegment.from_mp3(sys.argv[3])
+			filenamemp3 = sys.argv[3]
+			print filenamemp3
+			song = AudioSegment.from_mp3(filenamemp3)
+# // ---> en commentaire ce début d'intégration //
+#		elif sys.argv[6]== 'webserver':
+#            filetts = requests.get('http://192.168.1.56:8089/?method=getTTS&text='+sys.argv[3]+'&voice=voxygen.tts.helene')
+#            output = open(filename,'wb')
+#            output.write(filetts.content)
+#            output.close()
+#            song = AudioSegment.from_wav(filename)
         else:
             tts = gTTS(text=sys.argv[3].decode('utf-8'), lang=sys.argv[5])
             tts.save(filenamemp3)
@@ -75,7 +84,7 @@ def parle():
         song.export(filenamemp3, format="mp3", bitrate="128k", tags={'albumartist': 'Jeedom', 'title': 'TTS', 'artist':'Jeedom'}, parameters=["-ar", "44100","-vol", "200"])
     urltoplay=sys.argv[4]+'/plugins/gcast/tmp/cache/'+file+'.mp3'
     scriptdir=os.path.join(os.path.join(os.path.dirname(os.path.abspath(__file__)),'caster'),'stream2chromecast.py')
-    generalparams = ' -devicename ' + sys.argv[2] + ' ' + filenamemp3 
+	generalparams = ' -devicename ' + sys.argv[2] + ' ' + filenamemp3 
     cmd = 'sudo /usr/bin/python ' +scriptdir + generalparams
     print cmd
     proc = subprocess.Popen([cmd], stdout=subprocess.PIPE, shell=True)

@@ -105,9 +105,49 @@ class gcastCmd extends cmd {
 				$moteur = $gcast->getConfiguration("moteurtts", 'picotts');
 				$jeedompath=network::getNetworkAccess('internal');
 				if ($moteur == 'picotts'){
-					$options=$gcast->getConfiguration('picovoice','fr-FR');
-				} else if ($moteur == 'ttswebvoice') {
-					$options=$gcast->getConfiguration('ttswebvoice','com.google.android.tts');
+					$options=$gcast->getConfiguration('picovoice','fr-FR');				
+				} else if ($moteur == 'ttswebserver') { // ABA: ajout TTSWebServer //
+					$_ttswsIsInErrorDoDefault=false;
+					if (config::byKey('active','ttsWebServer',0)==1) {
+						$options=$gcast->getConfiguration('ttswsvoice','');
+						if ($options=='') {
+							$_ttswsIsInErrorDoDefault=true;
+							log::add('gcast','warning','[TTSWebServer] options of TTSWebServer is empty, stop action for ttswebserver');
+						} else {
+							list($_ttsws_id, $_ttsws_voice) = explode('|',$options);
+							if (!empty(trim($tts))) {
+								if ($_ttsws_id>0) {
+									$_ttswsOptions = array('eqLogicId'=>$_ttsws_id, 'message'=>$tts, 'returnType'=>'path','returnFormat'=>'mp3');
+									if ($_ttsws_voice!='') $_ttswsOptions['voice']=$_ttsws_voice;
+									log::add('gcast','debug','[TTSWebServer] _ttswsOptions='.print_r($_ttswsOptions,true));
+									$_fileTTSWSPath = ttsWebServer::getAudioFile($_ttswsOptions);
+									log::add('gcast','debug','[TTSWebServer] _fileTTSWSPath="'.$_fileTTSWSPath.'"');
+									if (file_exists($_fileTTSWSPath)) {
+										$tts = $_fileTTSWSPath;
+										$options = $_ttsws_voice;
+									} else {
+										$_ttswsIsInErrorDoDefault=true;
+										log::add('gcast','warning','[TTSWebServer] file is not found ('.$_fileTTSWSPath.'), stop action for ttswebserver');	
+									}
+								} else {
+									$_ttswsIsInErrorDoDefault=true;
+									log::add('gcast','warning','[TTSWebServer] id of TTSWebServer equipement is wrong ('.$_ttsws_id.'), stop action for ttswebserver');
+								}
+							} else {
+								$_ttswsIsInErrorDoDefault=true;
+								log::add('gcast','warning','[TTSWebServer] TTS text is empty, stop action for ttswebserver');
+							}
+						}
+					} else {
+						$_ttswsIsInErrorDoDefault=true;
+						log::add('gcast','warning','[TTSWebServer] TTS WebServer plugin is not active, stop action for ttswebserver');
+					}
+					if ($_ttswsIsInErrorDoDefault) { // si erreur détecté remet "google" par défaut //
+						log::add('gcast','warning','[TTSWebServer] ERROR for TTSWebServer, set default option (google/fr)');
+						$moteur='google';
+						$options=$gcast->getConfiguration('googlevoice','fr');
+					}
+					// ABA: fin ajout TTSWebServer //
 				} else {
 					$options=$gcast->getConfiguration('googlevoice','fr');
 				}

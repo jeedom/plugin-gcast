@@ -122,17 +122,19 @@ foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
 	<div class="form-group">
 	<label class="col-lg-3 control-label">{{Moteur TTS:}}</label>
                     		<div class="col-lg-3">
-                        	<select id="moteurtts" class="form-control eqLogicAttr" data-l1key="configuration" data-l2key="moteurtts" onchange="if(this.selectedIndex == 0){ document.getElementById('optionpico').style.display = 'block';document.getElementById('optiongoogle').style.display = 'none'}
-						else { document.getElementById('optionpico').style.display = 'none'; document.getElementById('optiongoogle').style.display = 'block'}">
+                        	<select id="moteurtts" class="form-control eqLogicAttr" data-l1key="configuration" data-l2key="moteurtts" onchange="javascript:showVoiceOption(this.value);">
 								<option value="picotts">{{PicoTTS}}</option>
 								<option value="google">{{Google}}</option>
+								<?php // ABA: ajout TTSWebServer //
+									if (config::byKey('active','ttsWebServer',0)==1) echo "<option value=\"ttswebserver\">{{TTS WebServer (plugin)}}</option>";
+								?>
 							</select>
                     		</div>
                     <div id="optionpico">
-					<br/><br/><br/>
-                     <label class="col-lg-3 control-label">{{Voix PicoTTS:}}</label>
-                    		<div class="col-lg-3">
-                        	<select id="picoopt" class="form-control eqLogicAttr" data-l1key="configuration" data-l2key="picovoice">
+						<br/><br/><br/>
+						<label class="col-lg-3 control-label">{{Voix PicoTTS:}}</label>
+                    	<div class="col-lg-3">
+							<select id="picoopt" class="form-control eqLogicAttr" data-l1key="configuration" data-l2key="picovoice">
 								<option value="fr-FR">{{Français}}</option>
                                 <option value="de-DE">{{Allemand}}</option>
                                 <option value="en-US">{{Américain}}</option>
@@ -140,12 +142,12 @@ foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
                                 <option value="es-ES">{{Espagnol}}</option>
 								<option value="it-IT">{{Italien}}</option>
 							</select>
-                    		</div>
-                     </div>
-					 <div id="optiongoogle">
-					<br/><br/><br/>
-					<label class="col-lg-3 control-label">{{Voix Google:}}</label>
-                    		<div class="col-lg-3">
+                    	</div>
+                    </div>
+					<div id="optiongoogle">
+						<br/><br/><br/>
+						<label class="col-lg-3 control-label">{{Voix Google:}}</label>
+                    	<div class="col-lg-3">
                         	<select id="googleopt" class="form-control eqLogicAttr" data-l1key="configuration" data-l2key="googlevoice">
 								<option value="fr">Français</option>
 	                            <option value="af">Afrikaans</option>
@@ -193,8 +195,27 @@ foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
 	                            <option value="vi">Vietnamese</option>
 	                            <option value="cy">Welsh</option>
 							</select>
-                    		</div>
-                     </div>
+                    	</div>
+                    </div>
+					<div id="optionttsws">
+						<br/><br/><br/>
+						<label class="col-lg-3 control-label">{{Voix TTS WebServer:}}</label>
+                    	<div class="col-lg-3">
+							<?php // ABA: ajout TTSWebServer //
+							if (config::byKey('active','ttsWebServer',0)==1) {
+								$_aTWSVoiceList = ttsWebServer::getVoicesList();
+								print_r($_aTWSVoiceList,1);
+								echo "<select id=\"ttswsopt\" class=\"form-control eqLogicAttr\" data-l1key=\"configuration\" data-l2key=\"ttswsvoice\">";
+								for ($i=0;$i<count($_aTWSVoiceList);$i++) {
+									echo "<option value=\"".$_aTWSVoiceList[$i]['eqLogicId']."|".$_aTWSVoiceList[$i]['voice']."\">[".$_aTWSVoiceList[$i]['eqLogicName']."] ".$_aTWSVoiceList[$i]['voice']."</option>";
+								}
+								echo "</select>";
+							} else { 
+								echo "Le plugin TTS WebServer n'est pas actif";
+							}
+							?>
+                    	</div>
+                    </div>
 	</div>
     </fieldset>
   </form>
