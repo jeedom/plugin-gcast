@@ -1,25 +1,25 @@
 {
     "plugins\/gcast\/desktop\/php\/gcast.php": {
-        "Ajouter un dispositif": "Ajouter un dispositif",
-        "Rechercher": "Rechercher",
-        "Gestion": "Gestion",
-        "Ajouter": "Ajouter",
-        "Santé": "Santé",
+        "Ajouter un dispositif": "デバイスの追加",
+        "Rechercher": "検索",
+        "Gestion": "管理",
+        "Ajouter": "加えます",
+        "Santé": "健康",
         "Mes gcasts": "Mes gcasts",
-        "Sauvegarder": "Sauvegarder",
-        "Supprimer": "Supprimer",
-        "Configuration avancée": "Configuration avancée",
-        "Dupliquer": "Dupliquer",
-        "Equipement": "Equipement",
-        "Commandes": "Commandes",
-        "Nom de l'équipement": "Nom de l'équipement",
-        "Objet parent": "Objet parent",
-        "Aucun": "Aucun",
-        "Catégorie": "Catégorie",
-        "Activer": "Activer",
-        "Visible": "Visible",
-        "Adresse IP": "Adresse IP",
-        "URL de retour": "URL de retour",
+        "Sauvegarder": "セーブ",
+        "Supprimer": "取り除きます",
+        "Configuration avancée": "高度な設定",
+        "Dupliquer": "複写",
+        "Equipement": "設備",
+        "Commandes": "コマンド",
+        "Nom de l'équipement": "機器の名前",
+        "Objet parent": "親オブジェクト",
+        "Aucun": "いいえ",
+        "Catégorie": "カテゴリ",
+        "Activer": "アクティブ",
+        "Visible": "目に見えます",
+        "Adresse IP": "IPアドレス",
+        "URL de retour": "リターンURL",
         "Moteur TTS:": "Moteur TTS:",
         "PicoTTS": "PicoTTS",
         "Google": "Google",
@@ -31,20 +31,20 @@
         "Espagnol": "Espagnol",
         "Italien": "Italien",
         "Voix Google:": "Voix Google:",
-        "Nom": "Nom",
-        "Options": "Options",
-        "Action": "Action"
+        "Nom": "名前",
+        "Options": "オプション",
+        "Action": "アクション"
     },
     "plugins\/gcast\/desktop\/js\/gcast.js": {
         "Santé Xee": "Santé Xee",
-        "Historiser": "Historiser",
-        "Tester": "Tester"
+        "Historiser": "historicize",
+        "Tester": "テスト"
     },
     "plugins\/gcast\/core\/class\/gcast.class.php": {
-        "Parle": "Parle",
-        "Phrase": "Phrase",
+        "Parle": "話します",
+        "Phrase": "文",
         "Vol+": "Vol+",
         "Vol-": "Vol-",
-        "Volume": "Volume"
+        "Volume": "ボリューム"
     }
 }

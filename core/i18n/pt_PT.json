@@ -1,25 +1,25 @@
 {
     "plugins\/gcast\/desktop\/php\/gcast.php": {
-        "Ajouter un dispositif": "Ajouter un dispositif",
-        "Rechercher": "Rechercher",
-        "Gestion": "Gestion",
-        "Ajouter": "Ajouter",
-        "Santé": "Santé",
+        "Ajouter un dispositif": "Adicionar dispositivo",
+        "Rechercher": "pesquisa",
+        "Gestion": "gestão",
+        "Ajouter": "adicionar",
+        "Santé": "saúde",
         "Mes gcasts": "Mes gcasts",
-        "Sauvegarder": "Sauvegarder",
-        "Supprimer": "Supprimer",
-        "Configuration avancée": "Configuration avancée",
-        "Dupliquer": "Dupliquer",
-        "Equipement": "Equipement",
-        "Commandes": "Commandes",
-        "Nom de l'équipement": "Nom de l'équipement",
-        "Objet parent": "Objet parent",
-        "Aucun": "Aucun",
-        "Catégorie": "Catégorie",
-        "Activer": "Activer",
-        "Visible": "Visible",
-        "Adresse IP": "Adresse IP",
-        "URL de retour": "URL de retour",
+        "Sauvegarder": "salvar",
+        "Supprimer": "remover",
+        "Configuration avancée": "configuração avançada",
+        "Dupliquer": "duplicar",
+        "Equipement": "equipamento",
+        "Commandes": "comandos",
+        "Nom de l'équipement": "Nome de equipamentos",
+        "Objet parent": "objeto pai",
+        "Aucun": "não",
+        "Catégorie": "categoria",
+        "Activer": "ativar",
+        "Visible": "visível",
+        "Adresse IP": "Endereço IP",
+        "URL de retour": "URL de retorno",
         "Moteur TTS:": "Moteur TTS:",
         "PicoTTS": "PicoTTS",
         "Google": "Google",
@@ -31,20 +31,20 @@
         "Espagnol": "Espagnol",
         "Italien": "Italien",
         "Voix Google:": "Voix Google:",
-        "Nom": "Nom",
-        "Options": "Options",
-        "Action": "Action"
+        "Nom": "nome",
+        "Options": "opções",
+        "Action": "ação"
     },
     "plugins\/gcast\/desktop\/js\/gcast.js": {
         "Santé Xee": "Santé Xee",
-        "Historiser": "Historiser",
-        "Tester": "Tester"
+        "Historiser": "historicizar",
+        "Tester": "teste"
     },
     "plugins\/gcast\/core\/class\/gcast.class.php": {
-        "Parle": "Parle",
-        "Phrase": "Phrase",
+        "Parle": "fala",
+        "Phrase": "sentença",
         "Vol+": "Vol+",
         "Vol-": "Vol-",
-        "Volume": "Volume"
+        "Volume": "volume"
     }
 }
