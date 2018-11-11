@@ -1,7 +1,7 @@
 Gcast 
 =====
 
-Description 
+Beschreibung 
 -----------
 
 Le plugin Gcast permet d’établir un lien entre votre Google Assistant et
