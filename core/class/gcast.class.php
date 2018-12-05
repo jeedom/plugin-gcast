@@ -120,7 +120,6 @@ class gcastCmd extends cmd {
 								if ($_ttsws_voice != '') {
 									$_ttswsOptions['voice'] = $_ttsws_voice;
 								}
-
 								log::add('gcast', 'debug', '[TTSWebServer] _ttswsOptions=' . print_r($_ttswsOptions, true));
 								$_fileTTSWSPath = ttsWebServer::getAudioFile($_ttswsOptions);
 								log::add('gcast', 'debug', '[TTSWebServer] _fileTTSWSPath="' . $_fileTTSWSPath . '"');
@@ -151,6 +150,8 @@ class gcastCmd extends cmd {
 					$options = $gcast->getConfiguration('googlevoice', 'fr');
 				}
 				// ABA: fin ajout TTSWebServer //
+			} else if ($moteur == 'jeedom') {
+				$options = file_get_contents(network::getNetworkAccess('internal') . '/core/api/tts.php?apikey=' . config::byKey('api', 'core') . '&path=1&text=' . urlencode($tts));
 			} else {
 				$options = $gcast->getConfiguration('googlevoice', 'fr');
 			}

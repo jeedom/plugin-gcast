@@ -68,6 +68,8 @@ def parle():
             song = AudioSegment.from_wav(filename)
         elif sys.argv[6]== 'ttswebserver':
 			song = AudioSegment.from_mp3(sys.argv[3])
+        elif sys.argv[6]== 'jeedom':
+            song = AudioSegment.from_mp3(sys.argv[5])
         else:
             tts = gTTS(text=sys.argv[3].decode('utf-8'), lang=sys.argv[5])
             tts.save(filenamemp3)

@@ -116,7 +116,7 @@ foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
 	  <div class="form-group">
     <label class="col-lg-3 control-label">{{URL de retour}}</label>
     <div class="alert alert-warning col-lg-6">
-        <span><?php echo network::getNetworkAccess('external') . '/plugins/gcast/core/php/gcastApi.php?apikey=' . config::byKey('api', 'gcast') . '&id=#ID_EQUIPEMENT#&query=XXXX';?></span>
+        <span><?php echo network::getNetworkAccess('external') . '/plugins/gcast/core/php/gcastApi.php?apikey=' . config::byKey('api', 'gcast') . '&id=#ID_EQUIPEMENT#&query=XXXX'; ?></span>
     </div>
 	</div>
 	<div class="form-group">
@@ -125,9 +125,13 @@ foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
                         	<select id="moteurtts" class="form-control eqLogicAttr" data-l1key="configuration" data-l2key="moteurtts" onchange="javascript:showVoiceOption(this.value);">
 								<option value="picotts">{{PicoTTS}}</option>
 								<option value="google">{{Google}}</option>
+                <option value="jeedom">{{Jeedom}}</option>
 								<?php // ABA: ajout TTSWebServer //
-									if (config::byKey('active','ttsWebServer',0)==1) echo "<option value=\"ttswebserver\">{{TTS WebServer (plugin)}}</option>";
-								?>
+if (config::byKey('active', 'ttsWebServer', 0) == 1) {
+	echo "<option value=\"ttswebserver\">{{TTS WebServer (plugin)}}</option>";
+}
+
+?>
 							</select>
                     		</div>
                     <div id="optionpico">
@@ -202,18 +206,18 @@ foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
 						<label class="col-lg-3 control-label">{{Voix TTS WebServer:}}</label>
                     	<div class="col-lg-3">
 							<?php // ABA: ajout TTSWebServer //
-							if (config::byKey('active','ttsWebServer',0)==1) {
-								$_aTWSVoiceList = ttsWebServer::getVoicesList();
-								print_r($_aTWSVoiceList,1);
-								echo "<select id=\"ttswsopt\" class=\"form-control eqLogicAttr\" data-l1key=\"configuration\" data-l2key=\"ttswsvoice\">";
-								for ($i=0;$i<count($_aTWSVoiceList);$i++) {
-									echo "<option value=\"".$_aTWSVoiceList[$i]['eqLogicId']."|".$_aTWSVoiceList[$i]['voice']."\">[".$_aTWSVoiceList[$i]['eqLogicName']."] ".$_aTWSVoiceList[$i]['voice']."</option>";
-								}
-								echo "</select>";
-							} else { 
-								echo "Le plugin TTS WebServer n'est pas actif";
-							}
-							?>
+if (config::byKey('active', 'ttsWebServer', 0) == 1) {
+	$_aTWSVoiceList = ttsWebServer::getVoicesList();
+	print_r($_aTWSVoiceList, 1);
+	echo "<select id=\"ttswsopt\" class=\"form-control eqLogicAttr\" data-l1key=\"configuration\" data-l2key=\"ttswsvoice\">";
+	for ($i = 0; $i < count($_aTWSVoiceList); $i++) {
+		echo "<option value=\"" . $_aTWSVoiceList[$i]['eqLogicId'] . "|" . $_aTWSVoiceList[$i]['voice'] . "\">[" . $_aTWSVoiceList[$i]['eqLogicName'] . "] " . $_aTWSVoiceList[$i]['voice'] . "</option>";
+	}
+	echo "</select>";
+} else {
+	echo "Le plugin TTS WebServer n'est pas actif";
+}
+?>
                     	</div>
                     </div>
 	</div>
