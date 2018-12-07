@@ -46,16 +46,7 @@ function addCmdToTable(_cmd) {
     jeedom.cmd.changeType($('#table_cmd tbody tr:last'), init(_cmd.subType));
 }
 
-// ABA: ajout TTSWebServer //
 function showVoiceOption(_selectValue) {
-	document.getElementById('optionpico').style.display='none'; 
-	document.getElementById('optiongoogle').style.display='none'; 
-	document.getElementById('optionttsws').style.display='none';
-	if(_selectValue=='picotts'){ //pico
-		document.getElementById('optionpico').style.display='block'; 
-	} else if(_selectValue=='ttswebserver'){ //ttswebserver
-		document.getElementById('optionttsws').style.display='block';
-	} else { //google
-		document.getElementById('optiongoogle').style.display='block'; 
-	}
+	$('.voiceOption').hide(); 
+    $('.voiceOption.'+_selectValue).show(); 
 }
