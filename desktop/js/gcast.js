@@ -21,7 +21,7 @@
 });
  
  $("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
-function addCmdToTable(_cmd) {
+ function addCmdToTable(_cmd) {
     if (!isset(_cmd)) {
         var _cmd = {configuration: {}};
     }
@@ -48,5 +48,7 @@ function addCmdToTable(_cmd) {
 
 function showVoiceOption(_selectValue) {
 	$('.voiceOption').hide(); 
-    $('.voiceOption.'+_selectValue).show(); 
+    if(_selectValue != ''){
+      $('.voiceOption.'+_selectValue).show(); 
+  }
 }
