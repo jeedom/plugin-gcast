@@ -21,7 +21,7 @@
 });
  
  $("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
-function addCmdToTable(_cmd) {
+ function addCmdToTable(_cmd) {
     if (!isset(_cmd)) {
         var _cmd = {configuration: {}};
     }
@@ -46,16 +46,9 @@ function addCmdToTable(_cmd) {
     jeedom.cmd.changeType($('#table_cmd tbody tr:last'), init(_cmd.subType));
 }
 
-// ABA: ajout TTSWebServer //
 function showVoiceOption(_selectValue) {
-	document.getElementById('optionpico').style.display='none'; 
-	document.getElementById('optiongoogle').style.display='none'; 
-	document.getElementById('optionttsws').style.display='none';
-	if(_selectValue=='picotts'){ //pico
-		document.getElementById('optionpico').style.display='block'; 
-	} else if(_selectValue=='ttswebserver'){ //ttswebserver
-		document.getElementById('optionttsws').style.display='block';
-	} else { //google
-		document.getElementById('optiongoogle').style.display='block'; 
-	}
+	$('.voiceOption').hide(); 
+    if(_selectValue != ''){
+      $('.voiceOption.'+_selectValue).show(); 
+  }
 }
