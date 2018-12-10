@@ -168,8 +168,14 @@ class gcastCmd extends cmd {
 		} else {
 			$cmd = '/usr/bin/python ' . dirname(__FILE__) . '/../../resources/action.py ' . $action . ' ' . $ip;
 		}
+		if (log::convertLogLevel(log::getLogLevel('gcast')) == 'debug') {
+			$cmd .= ' >> ' . log::getPathToLog('gcast') . ' 2>&1 &';
+		} else {
+			$cmd .= ' > /dev/null 2>&1 &';
+		}
 		log::add('gcast', 'debug', $cmd);
-		$result = shell_exec($cmd . ' > /dev/null 2>&1 &');
+		shell_exec($cmd);
+		usleep(500);
 	}
 
 	/*     * **********************Getteur Setteur*************************** */
