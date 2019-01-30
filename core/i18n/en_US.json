@@ -5,7 +5,7 @@
         "Gestion": "Management",
         "Ajouter": "Add",
         "Santé": "Health",
-        "Mes gcasts": "Mes gcasts",
+        "Mes gcasts": "My gcasts",
         "Sauvegarder": "Save",
         "Supprimer": "Delete",
         "Configuration avancée": "Advanced configuration",
@@ -30,13 +30,13 @@
         "Anglais": "English",
         "Espagnol": "Spanish",
         "Italien": "Italian",
-        "Voix Google:": "Voix Google:",
+        "Voix Google:": "Google voice:",
         "Nom": "Name",
         "Options": "Options",
         "Action": "Action"
     },
     "plugins\/gcast\/desktop\/js\/gcast.js": {
-        "Santé Xee": "Santé Xee",
+        "Santé Xee": "Xee health",
         "Historiser": "Historize",
         "Tester": "Test"
     },
