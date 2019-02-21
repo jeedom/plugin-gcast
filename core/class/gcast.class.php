@@ -1,33 +1,33 @@
 <?php
 
 /* This file is part of Jeedom.
- *
- * Jeedom is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * Jeedom is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
- */
+*
+* Jeedom is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Jeedom is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
+*/
 
 /* * ***************************Includes********************************* */
 
 class gcast extends eqLogic {
 	/*     * *************************Attributs****************************** */
-
+	
 	private $_collectDate = '';
 	public static $_widgetPossibility = array('custom' => true);
-
+	
 	/*     * ***********************Methode static*************************** */
-
+	
 	/*     * *********************Methode d'instance************************* */
-
+	
 	public function postSave() {
 		$parle = $this->getCmd(null, 'parle');
 		if (!is_object($parle)) {
@@ -42,7 +42,7 @@ class gcast extends eqLogic {
 		$parle->setDisplay('title_disable', 1);
 		$parle->setDisplay('message_placeholder', __('Phrase', __FILE__));
 		$parle->save();
-
+		
 		$volplus = $this->getCmd(null, 'volup');
 		if (!is_object($volplus)) {
 			$volplus = new gcastcmd();
@@ -54,7 +54,7 @@ class gcast extends eqLogic {
 		$volplus->setSubType('other');
 		$volplus->setEqLogic_id($this->getId());
 		$volplus->save();
-
+		
 		$volmoins = $this->getCmd(null, 'voldown');
 		if (!is_object($volmoins)) {
 			$volmoins = new gcastcmd();
@@ -66,7 +66,7 @@ class gcast extends eqLogic {
 		$volmoins->setSubType('other');
 		$volmoins->setEqLogic_id($this->getId());
 		$volmoins->save();
-
+		
 		$volume = $this->getCmd(null, 'volume');
 		if (!is_object($volume)) {
 			$volume = new gcastcmd();
@@ -79,18 +79,18 @@ class gcast extends eqLogic {
 		$volume->setEqLogic_id($this->getId());
 		$volume->save();
 	}
-
+	
 	/*     * **********************Getteur Setteur*************************** */
-
+	
 }
 
 class gcastCmd extends cmd {
 	/*     * *************************Attributs****************************** */
-
+	
 	/*     * ***********************Methode static*************************** */
-
+	
 	/*     * *********************Methode d'instance************************* */
-
+	
 	public function execute($_options = null) {
 		if ($this->getType() == '') {
 			return '';
@@ -175,8 +175,7 @@ class gcastCmd extends cmd {
 		}
 		log::add('gcast', 'debug', $cmd);
 		shell_exec($cmd);
-		usleep(500);
 	}
-
+	
 	/*     * **********************Getteur Setteur*************************** */
 }
