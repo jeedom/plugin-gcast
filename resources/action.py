@@ -78,7 +78,7 @@ def parle():
     urltoplay=sys.argv[4]+'/plugins/gcast/tmp/cache/'+file+'.mp3'
     scriptdir=os.path.join(os.path.join(os.path.dirname(os.path.abspath(__file__)),'caster'),'stream2chromecast.py')
     generalparams = ' -devicename ' + sys.argv[2] + ' ' + filenamemp3 
-    cmd = 'sudo /usr/bin/python ' +scriptdir + generalparams
+    cmd = 'sudo /usr/bin/python ' +scriptdir + generalparams+' >> /tmp/debug'+sys.argv[2]+' 2>&1'
     print cmd
     proc = subprocess.Popen([cmd], stdout=subprocess.PIPE, shell=True)
     (out, err) = proc.communicate()
