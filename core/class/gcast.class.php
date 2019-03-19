@@ -26,7 +26,7 @@ class gcast extends eqLogic {
 	
 	/*     * ***********************Methode static*************************** */
 	
-	public static cronHourly(){
+	public static function cronHourly(){
 		$processes = array_merge(system::ps('gcast/resources/caster/stream2chromecast.py'), system::ps('gcast/core/class/../../resources/action.py'));
 		foreach ($processes as $process) {
 			$duration = shell_exec('ps -p ' . $process['pid'] . ' -o etimes -h');
