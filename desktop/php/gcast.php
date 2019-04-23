@@ -7,49 +7,45 @@ sendVarToJS('eqType', $plugin->getId());
 $eqLogics = eqLogic::byType($plugin->getId());
 ?>
 <div class="row row-overflow">
-	<div class="col-xs-12 eqLogicThumbnailDisplay" style="padding-left: 25px;">
-		<legend><i class="fa fa-cog"></i>  {{Gestion}}</legend>
+	<div class="col-xs-12 eqLogicThumbnailDisplay">
+		<legend><i class="fas fa-cog"></i>  {{Gestion}}</legend>
 		<div class="eqLogicThumbnailContainer">
-			<div class="cursor eqLogicAction" data-action="add" style="text-align: center; background-color : #ffffff; height : 120px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
-				<i class="fa fa-plus-circle" style="font-size : 5em;color:#94ca02;"></i>
+			<div class="cursor eqLogicAction logoPrimary" data-action="add">
+				<i class="fas fa-plus-circle"></i>
 				<br>
-				<span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;;color:#94ca02">{{Ajouter}}</span>
+				<span>{{Ajouter}}</span>
 			</div>
-			<div class="cursor" id="bt_healthgcast" style="text-align: center; background-color : #ffffff; height : 120px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
-				<i class="fa fa-medkit" style="font-size : 5em;color:#767676;"></i>
+			<div class="cursor" id="bt_healthgcast">
+				<i class="fas fa-medkit"></i>
 				<br>
-				<span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#767676">{{Santé}}</span>
+				<span >{{Santé}}</span>
 			</div>
 		</div>
-		<legend><i class="icon techno-cable1"></i>  {{Mes gcasts}}
-		</legend>
+		<legend><i class="icon techno-cable1"></i> {{Mes gcasts}}</legend>
+		<input class="form-control" placeholder="{{Rechercher}}" id="in_searchEqlogic" />
 		<div class="eqLogicThumbnailContainer">
 			<?php
 			foreach ($eqLogics as $eqLogic) {
-				$opacity = '';
-				if ($eqLogic->getIsEnable() != 1) {
-					$opacity = 'opacity:0.3;';
-				}
-				echo '<div class="eqLogicDisplayCard cursor" data-eqLogic_id="' . $eqLogic->getId() . '" style="text-align: center; background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;' . $opacity . '" >';
-				echo '<img src="' . $plugin->getPathImgIcon() . '" height="105" width="105" />';
-				echo "<br>";
-				echo '<span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;">' . $eqLogic->getHumanName(true, true) . '</span>';
+				$opacity = ($eqLogic->getIsEnable()) ? '' : 'disableCard';
+				echo '<div class="eqLogicDisplayCard cursor '.$opacity.'" data-eqLogic_id="' . $eqLogic->getId() . '">';
+				echo '<img src="' . $plugin->getPathImgIcon() . '"/>';
+				echo '<br>';
+				echo '<span>' . $eqLogic->getHumanName(true, true) . '</span>';
 				echo '</div>';
-				$url = network::getNetworkAccess('external') . '/plugins/gcast/core/php/gcastApi.php?apikey=' . jeedom::getApiKey('gcast') . '&id=' . $eqLogic->getId();
 			}
 			?>
 		</div>
 	</div>
-	<div class="col-xs-12 eqLogic" style="padding-left: 25px;display: none;">
+	<div class="col-xs-12 eqLogic" style="display: none;">
 		<div class="input-group pull-right" style="display:inline-flex">
 			<span class="input-group-btn">
-				<a class="btn btn-default btn-sm eqLogicAction roundedLeft" data-action="configure"><i class="fa fa-cogs"></i> {{Configuration avancée}}</a><a class="btn btn-default btn-sm eqLogicAction" data-action="copy"><i class="fa fa-copy"></i> {{Dupliquer}}</a><a class="btn btn-sm btn-success eqLogicAction" data-action="save"><i class="fa fa-check-circle"></i> {{Sauvegarder}}</a><a class="btn btn-danger btn-sm eqLogicAction roundedRight" data-action="remove"><i class="fa fa-minus-circle"></i> {{Supprimer}}</a>
+				<a class="btn btn-default btn-sm eqLogicAction roundedLeft" data-action="configure"><i class="fas fa-cogs"></i> {{Configuration avancée}}</a><a class="btn btn-default btn-sm eqLogicAction" data-action="copy"><i class="fas fa-copy"></i> {{Dupliquer}}</a><a class="btn btn-sm btn-success eqLogicAction" data-action="save"><i class="fas fa-check-circle"></i> {{Sauvegarder}}</a><a class="btn btn-danger btn-sm eqLogicAction roundedRight" data-action="remove"><i class="fas fa-minus-circle"></i> {{Supprimer}}</a>
 			</span>
 		</div>
 		<ul class="nav nav-tabs" role="tablist">
-			<li role="presentation"><a href="#" class="eqLogicAction" aria-controls="home" role="tab" data-toggle="tab" data-action="returnToThumbnailDisplay"><i class="fa fa-arrow-circle-left"></i></a></li>
-			<li role="presentation" class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-tachometer"></i> {{Equipement}}</a></li>
-			<li role="presentation"><a href="#commandtab" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-list-alt"></i> {{Commandes}}</a></li>
+			<li role="presentation"><a href="#" class="eqLogicAction" aria-controls="home" role="tab" data-toggle="tab" data-action="returnToThumbnailDisplay"><i class="fas fa-arrow-circle-left"></i></a></li>
+			<li role="presentation" class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab"><i class="fas fa-tachometer-alt"></i> {{Equipement}}</a></li>
+			<li role="presentation"><a href="#commandtab" aria-controls="profile" role="tab" data-toggle="tab"><i class="fas fa-list-alt"></i> {{Commandes}}</a></li>
 		</ul>
 		<div class="tab-content" style="height:calc(100% - 50px);overflow:auto;overflow-x: hidden;">
 			<div role="tabpanel" class="tab-pane active" id="eqlogictab">
@@ -69,7 +65,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 								<select id="sel_object" class="eqLogicAttr form-control" data-l1key="object_id">
 									<option value="">{{Aucun}}</option>
 									<?php
-									foreach (object::all() as $object) {
+									foreach (jeeObject::all() as $object) {
 										echo '<option value="' . $object->getId() . '">' . $object->getName() . '</option>';
 									}
 									?>
@@ -112,7 +108,6 @@ $eqLogics = eqLogic::byType($plugin->getId());
 							<div class="col-lg-3">
 								<select id="moteurtts" class="form-control eqLogicAttr" data-l1key="configuration" data-l2key="moteurtts" onchange="javascript:showVoiceOption(this.value);">
 									<option value="picotts">{{PicoTTS}}</option>
-									<option value="google">{{Google}}</option>
 									<option value="jeedom">{{Jeedom}}</option>
 									<?php // ABA: ajout TTSWebServer //
 									if (config::byKey('active', 'ttsWebServer', 0) == 1) {
