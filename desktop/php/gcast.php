@@ -108,7 +108,6 @@ $eqLogics = eqLogic::byType($plugin->getId());
 							<div class="col-lg-3">
 								<select id="moteurtts" class="form-control eqLogicAttr" data-l1key="configuration" data-l2key="moteurtts" onchange="javascript:showVoiceOption(this.value);">
 									<option value="picotts">{{PicoTTS}}</option>
-									<option value="google">{{Google}}</option>
 									<option value="jeedom">{{Jeedom}}</option>
 									<?php // ABA: ajout TTSWebServer //
 									if (config::byKey('active', 'ttsWebServer', 0) == 1) {
