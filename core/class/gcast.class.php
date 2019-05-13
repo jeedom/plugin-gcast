@@ -110,7 +110,7 @@ class gcastCmd extends cmd {
 		$action = $this->getLogicalId();
 		$ip = $gcast->getConfiguration('addr');
 		if ($action == 'parle') {
-			$tts = str_replace(array('[', ']', '#'), array('', ' ', ''), $_options['message']);
+			$tts = $_options['message'];
 			$moteur = $gcast->getConfiguration("moteurtts", 'picotts');
 			$jeedompath = network::getNetworkAccess('internal');
 			if ($moteur == 'picotts') {
