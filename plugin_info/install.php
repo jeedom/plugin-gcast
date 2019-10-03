@@ -22,5 +22,8 @@ function gcast_update() {
 	foreach (gcast::byType('gcast') as $gcast) {
 		$gcast->save();
 	}
+	if(config::byKey('api', 'gcast') == ''){
+  		$apikey = jeedom::getApiKey('gcast');
+  	}
 }
 ?>
