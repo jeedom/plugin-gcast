@@ -11,8 +11,8 @@ apt-get update
 echo 50 > ${PROGRESS_FILE}
 apt-get remove -y python-enum
 echo 60 > ${PROGRESS_FILE}
-apt-get install -y  ffmpeg
-apt-get install -y  avconv
+apt-get install -y ffmpeg
+apt-get install -y avconv
 echo 65 > ${PROGRESS_FILE}
 apt-get install -y  python-requests python-serial python-pyudev
 echo 75 > ${PROGRESS_FILE}
