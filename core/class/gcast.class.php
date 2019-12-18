@@ -109,64 +109,10 @@ class gcastCmd extends cmd {
 		$gcast = $this->getEqLogic();
 		$action = $this->getLogicalId();
 		$ip = $gcast->getConfiguration('addr');
+		$cmd='sudo /usr/bin/python ' . dirname(__FILE__) . '/../../resources/caster/stream2chromecast.py  -devicename '. $ip;
 		if ($action == 'parle') {
-			$tts = $_options['message'];
-			$moteur = $gcast->getConfiguration("moteurtts", 'picotts');
-			$jeedompath = network::getNetworkAccess('internal');
-			if ($moteur == 'picotts') {
-				$options = $gcast->getConfiguration('picovoice', 'fr-FR');
-			} else if ($moteur == 'ttswebserver') {
-				// ABA: ajout TTSWebServer //
-				$_ttswsIsInErrorDoDefault = false;
-				if (config::byKey('active', 'ttsWebServer', 0) == 1) {
-					$options = $gcast->getConfiguration('ttswsvoice', '');
-					if ($options == '') {
-						$_ttswsIsInErrorDoDefault = true;
-						log::add('gcast', 'warning', '[TTSWebServer] options of TTSWebServer is empty, stop action for ttswebserver');
-					} else {
-						list($_ttsws_id, $_ttsws_voice) = explode('|', $options);
-						if (!empty(trim($tts))) {
-							if ($_ttsws_id > 0) {
-								$_ttswsOptions = array('eqLogicId' => $_ttsws_id, 'message' => $tts, 'returnType' => 'path', 'returnFormat' => 'mp3');
-								if ($_ttsws_voice != '') {
-									$_ttswsOptions['voice'] = $_ttsws_voice;
-								}
-								log::add('gcast', 'debug', '[TTSWebServer] _ttswsOptions=' . print_r($_ttswsOptions, true));
-								$_fileTTSWSPath = ttsWebServer::getAudioFile($_ttswsOptions);
-								log::add('gcast', 'debug', '[TTSWebServer] _fileTTSWSPath="' . $_fileTTSWSPath . '"');
-								if (file_exists($_fileTTSWSPath)) {
-									$tts = $_fileTTSWSPath;
-									$options = $_ttsws_voice;
-								} else {
-									$_ttswsIsInErrorDoDefault = true;
-									log::add('gcast', 'warning', '[TTSWebServer] file is not found (' . $_fileTTSWSPath . '), stop action for ttswebserver');
-								}
-							} else {
-								$_ttswsIsInErrorDoDefault = true;
-								log::add('gcast', 'warning', '[TTSWebServer] id of TTSWebServer equipement is wrong (' . $_ttsws_id . '), stop action for ttswebserver');
-							}
-						} else {
-							$_ttswsIsInErrorDoDefault = true;
-							log::add('gcast', 'warning', '[TTSWebServer] TTS text is empty, stop action for ttswebserver');
-						}
-					}
-				} else {
-					$_ttswsIsInErrorDoDefault = true;
-					log::add('gcast', 'warning', '[TTSWebServer] TTS WebServer plugin is not active, stop action for ttswebserver');
-				}
-				if ($_ttswsIsInErrorDoDefault) {
-					// si erreur détecté remet "google" par défaut //
-					log::add('gcast', 'warning', '[TTSWebServer] ERROR for TTSWebServer, set default option (google/fr)');
-					$moteur = 'google';
-					$options = $gcast->getConfiguration('googlevoice', 'fr');
-				}
-				// ABA: fin ajout TTSWebServer //
-			} else if ($moteur == 'jeedom') {
-				$options = file_get_contents(network::getNetworkAccess('internal') . '/core/api/tts.php?apikey=' . config::byKey('api', 'core') . '&path=1&text=' . urlencode($tts));
-			} else {
-				$options = $gcast->getConfiguration('googlevoice', 'fr');
-			}
-			$cmd = '/usr/bin/python ' . dirname(__FILE__) . '/../../resources/action.py ' . $action . ' ' . $ip . ' "' . $tts . '" "' . $jeedompath . '" ' . $options . ' ' . $moteur;
+			$url = network::getNetworkAccess('internal') . '/core/api/tts.php?apikey=' . config::byKey('api', 'core') . '&path=1&text=' . urlencode($_options['message']);
+			$cmd .= ' -playurl "' . $url .'"' ;
 		} else if ($action == 'volume') {
 			if ($_options['slider'] < 0) {
 				$_options['slider'] = 0;
@@ -175,9 +121,9 @@ class gcastCmd extends cmd {
 				$_options['slider'] = 100;
 			}
 			$volume = $_options['slider'] / 100;
-			$cmd = '/usr/bin/python ' . dirname(__FILE__) . '/../../resources/action.py ' . $action . ' ' . $ip . ' ' . $volume;
+			$cmd .= ' -setvol ' . $volume ;
 		} else {
-			$cmd = '/usr/bin/python ' . dirname(__FILE__) . '/../../resources/action.py ' . $action . ' ' . $ip;
+			$cmd .= ' -' . $action ;
 		}
 		if (log::convertLogLevel(log::getLogLevel('gcast')) == 'debug') {
 			$cmd .= ' >> ' . log::getPathToLog('gcast') . ' 2>&1 &';
