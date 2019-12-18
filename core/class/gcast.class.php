@@ -111,8 +111,8 @@ class gcastCmd extends cmd {
 		$ip = $gcast->getConfiguration('addr');
 		$cmd='sudo /usr/bin/python ' . dirname(__FILE__) . '/../../resources/caster/stream2chromecast.py  -devicename '. $ip;
 		if ($action == 'parle') {
-			$url = network::getNetworkAccess('internal') . '/core/api/tts.php?apikey=' . config::byKey('api', 'core') . '&path=1&text=' . urlencode($_options['message']);
-			$cmd .= ' -playurl "' . $url .'"' ;
+			$url = file_get_contents(network::getNetworkAccess('internal') . '/core/api/tts.php?apikey=' . config::byKey('api', 'core') . '&path=1&text=' . urlencode($_options['message']));
+			$cmd .= ' "' . $url .'"' ;
 		} else if ($action == 'volume') {
 			if ($_options['slider'] < 0) {
 				$_options['slider'] = 0;
