@@ -1,3 +1,7 @@
+- Nettoyage et optimisation
+- Suppression du choix des moteurs
+
+
 # 23/04/2019
 
 - Suppression du moteur de voix Google
