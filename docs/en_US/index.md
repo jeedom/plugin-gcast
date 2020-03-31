@@ -1,4 +1,4 @@
-Gcast 
+Gcast
 =====
 
 Description
@@ -19,7 +19,7 @@ de votre Google Assistant. Ce plugin permet de faire parler un google
 cast et de contrôler son volume. Il permet aussi d’agir comme un pont
 pour les interactions et Google Home.
 
-Configuration de IFTTT pour le retour TTS 
+Configuration de IFTTT pour le retour TTS
 =========================================
 
 Sans IFTTT, votre Google Assistant ne pourras pas echanger avec Jeedom.
@@ -89,5 +89,4 @@ Sans IFTTT, votre Google Assistant ne pourras pas echanger avec Jeedom.
 Il ne reste plus qu’a cliquer sur "Save" et profiter de vos intéractions
 entre Google Assistant et Jeedom !
 
-L’utilisation de ASK est même possible ''' === Changelog Changelog
-détaillé : <https://github.com/jeedom/plugin-gcast/commits/stable>
+L’utilisation de ASK est même possible
