@@ -1,36 +1,25 @@
 {
     "plugins\/gcast\/desktop\/php\/gcast.php": {
-        "Ajouter un dispositif": "Add a device",
-        "Rechercher": "Search",
+        "401 - Accès non autorisé": "401 - Unauthorized access",
         "Gestion": "Management",
         "Ajouter": "Add",
         "Santé": "Health",
         "Mes gcasts": "My gcasts",
-        "Sauvegarder": "Save",
-        "Supprimer": "Delete",
+        "Rechercher": "Search",
         "Configuration avancée": "Advanced configuration",
         "Dupliquer": "Duplicate",
+        "Sauvegarder": "Save",
+        "Supprimer": "Delete",
         "Equipement": "Device",
         "Commandes": "Commands",
-        "Nom de l'équipement": "Device name",
+        "Nom de l'équipement": "Name of equipment",
         "Objet parent": "Parent object",
         "Aucun": "None",
         "Catégorie": "Category",
         "Activer": "Activate",
         "Visible": "Visible",
-        "Adresse IP": "IP address",
-        "URL de retour": "Return URL",
-        "Moteur TTS:": "TTS engine:",
-        "PicoTTS": "PicoTTS",
-        "Google": "Google",
-        "Voix PicoTTS:": "PicoTTS voice:",
-        "Français": "Français",
-        "Allemand": "German",
-        "Américain": "American",
-        "Anglais": "English",
-        "Espagnol": "Spanish",
-        "Italien": "Italian",
-        "Voix Google:": "Google voice:",
+        "Adresse IP": "IP adress",
+        "URL de retour": "Return url",
         "Nom": "Name",
         "Options": "Options",
         "Action": "Action"
@@ -40,11 +29,15 @@
         "Historiser": "Historize",
         "Tester": "Test"
     },
+    "plugins\/gcast\/core\/php\/gcastApi.php": {
+        "Clef API non valide, vous n\\'êtes pas autorisé à effectuer cette action (gcast)": "",
+        "Id inconnu : ": ""
+    },
     "plugins\/gcast\/core\/class\/gcast.class.php": {
         "Parle": "Speak",
-        "Phrase": "Sentence",
-        "Vol+": "Vol+",
-        "Vol-": "Vol-",
-        "Volume": "Volume"
+        "Phrase": "Phrasing",
+        "Vol+": "",
+        "Vol-": "",
+        "Volume": ""
     }
 }
