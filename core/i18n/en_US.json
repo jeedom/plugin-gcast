@@ -30,14 +30,14 @@
         "Tester": "Test"
     },
     "plugins\/gcast\/core\/php\/gcastApi.php": {
-        "Clef API non valide, vous n\\'êtes pas autorisé à effectuer cette action (gcast)": "",
-        "Id inconnu : ": ""
+        "Clef API non valide, vous n\\'êtes pas autorisé à effectuer cette action (gcast)": "API key not valid, you are not authorized to perform this action (gcast)",
+        "Id inconnu : ": "Unknown ID:"
     },
     "plugins\/gcast\/core\/class\/gcast.class.php": {
         "Parle": "Speak",
         "Phrase": "Phrasing",
-        "Vol+": "",
-        "Vol-": "",
-        "Volume": ""
+        "Vol+": "Vol+",
+        "Vol-": "Vol-",
+        "Volume": "Volume"
     }
 }
