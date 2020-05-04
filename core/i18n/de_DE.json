@@ -4,7 +4,7 @@
         "Gestion": "Verwaltung",
         "Ajouter": "Hinzufügen",
         "Santé": "Gesundheit",
-        "Mes gcasts": "",
+        "Mes gcasts": "Meine Gcasts",
         "Rechercher": "Suchen nach",
         "Configuration avancée": "Erweiterte Konfiguration",
         "Dupliquer": "Duplikat",
@@ -30,14 +30,14 @@
         "Tester": "Test"
     },
     "plugins\/gcast\/core\/php\/gcastApi.php": {
-        "Clef API non valide, vous n\\'êtes pas autorisé à effectuer cette action (gcast)": "",
-        "Id inconnu : ": ""
+        "Clef API non valide, vous n\\'êtes pas autorisé à effectuer cette action (gcast)": "API-Schlüssel ungültig, Sie sind nicht berechtigt, diese Aktion auszuführen (gcast)",
+        "Id inconnu : ": "Unbekannte ID:"
     },
     "plugins\/gcast\/core\/class\/gcast.class.php": {
         "Parle": "Sprich",
         "Phrase": "Satz",
-        "Vol+": "",
-        "Vol-": "",
+        "Vol+": "Flug +",
+        "Vol-": "Vol-",
         "Volume": "Lautstärke"
     }
 }

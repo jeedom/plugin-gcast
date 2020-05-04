@@ -1,18 +1,18 @@
-# 
+# 31/03/2020
 
-- 
-- 
-- 
+- Limpeza e otimização
+- Eliminação da escolha do motor
+- Compatibilidade com o plugin de som
 
->****
+>**IMPORTANT**
 >
->
+>Esta atualização não deixa escolha no mecanismo TTS
 
 
-# 
+# 23/04/2019
 
-- 
+- Remoção do mecanismo de voz do Google
 
-# 
+# 18/03/2019
 
-- 
+- Adição de um sistema que mata automaticamente os processos de plug-in que estão em execução há mais de 10 minutos

@@ -4,7 +4,7 @@
         "Gestion": "Gestão",
         "Ajouter": "Adicionar",
         "Santé": "Saúde",
-        "Mes gcasts": "",
+        "Mes gcasts": "Meus gcasts",
         "Rechercher": "Pesquisa",
         "Configuration avancée": "Configuração avançada",
         "Dupliquer": "Duplicar",
@@ -25,19 +25,19 @@
         "Action": "Ação"
     },
     "plugins\/gcast\/desktop\/js\/gcast.js": {
-        "Santé Xee": "",
+        "Santé Xee": "Health Xee",
         "Historiser": "Historicizar",
         "Tester": "Teste"
     },
     "plugins\/gcast\/core\/php\/gcastApi.php": {
-        "Clef API non valide, vous n\\'êtes pas autorisé à effectuer cette action (gcast)": "",
-        "Id inconnu : ": ""
+        "Clef API non valide, vous n\\'êtes pas autorisé à effectuer cette action (gcast)": "Chave da API inválida, você não está autorizado a executar esta ação (gcast)",
+        "Id inconnu : ": "ID desconhecido:"
     },
     "plugins\/gcast\/core\/class\/gcast.class.php": {
         "Parle": "Fala",
         "Phrase": "Sentença",
-        "Vol+": "",
-        "Vol-": "",
+        "Vol+": "Voo +",
+        "Vol-": "Vol-",
         "Volume": "Volume"
     }
 }
