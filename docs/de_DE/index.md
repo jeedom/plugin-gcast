@@ -16,42 +16,42 @@ Ohne IFTTT kann Ihr Google-Assistent nicht mit Jeedom austauschen.
 
 -   Se connecter ou s'inscrire sur IFTTT : <https://ifttt.com> (oder über die mobile App)
 -   Registerkarte "Meine Applets" und dann "Neues Applet""
--   Klicken Sie auf "+ This" und wählen Sie "Google Assistant" (verknüpfen Sie Ihren Google Assistant mit IFTTT, falls dies noch nicht geschehen ist).
+-   Klicken Sie auf "+ This" und wählen Sie "Google Assistant" (verknüpfen Sie Ihren Google Assistant mit IFTTT, falls dies noch nicht geschehen ist)
 -   Wählen Sie den Auslöser "Sagen Sie eine Phrase mit einer Textzutat"
 
 **Beispiel für die Konfiguration des ersten Teils des Applets :**
 
 -   **Was willst du sagen?** : dis à jeedom \$
-    > **Tip**
+    > **Spitze**
     >
     > Sie müssen unbedingt '\ $' am Ende Ihres Satzes setzen
 
 -   **Was ist eine andere Art, es zu sagen? (optional)** : maison \$
 -   **Und noch anders? (optional)** : jarvis \$
 -   **Was soll der Assistent als Antwort sagen??** : Das tue ich
-    > **Tip**
+    > **Spitze**
     >
     > Hier ist es der Satz, den Ihr Google-Assistent beantwortet
     > bevor es Ihre Anfrage bearbeitet
 
--   **Language** : French
--   Klicken Sie auf "+ That" und wählen Sie "Webhooks" (aktivieren Sie den Dienst, falls dies noch nicht geschehen ist).
+-   **Sprache** : French
+-   Klicken Sie auf "+ That" und wählen Sie "Webhooks" (aktivieren Sie den Dienst, falls dies noch nicht geschehen ist)
 -   Wählen Sie den einzigen verfügbaren Auslöser : Stellen Sie eine Webanfrage
 
 **Beispiel für die Konfiguration des zweiten Teils des Applets :**
 
--   **URL** : Sie müssen die auf Ihrer Ausrüstungsseite angegebene Rückgabe-URL einfügen
-    > **Tip**
+-   **URLs** : Sie müssen die auf Ihrer Ausrüstungsseite angegebene Rückgabe-URL einfügen
+    > **Spitze**
     >
-    > Die Rückgabe-URL muss geändert werden : ***ID\_ AUSRÜSTUNG*** muss durch die ID Ihres Google-Assistenten ersetzt werden (Klicken Sie auf der Seite Ihres Geräts auf "Erweiterte Konfiguration", um die ID zu erfahren) und *query=XXXX* per query = {{TextField}}
+    > Die Rückgabe-URL muss geändert werden : ***ID\_ AUSRÜSTUNG*** muss durch die ID Ihres Google-Assistenten ersetzt werden (Klicken Sie auf der Seite Ihres Geräts auf "Erweiterte Konfiguration", um die ID zu erfahren) und *Abfrage=XXXX* per query = {{TextField}}
 
-    > **Important**
+    > **Wichtig**
     >
     > URL muss externe URL sein ``https://mon\_dns.com/plugins/gcast/core/php/gcastApi.php?apikey=xxxxxxMA\_CLE\_APIxxxxxxxx&id=142&query={{TextField}}``
 
--   **Method** : GET
+-   **Methode** : GET
 -   **Inhaltstyp** : Anwendung / json
--   **Body** : {{TextField}}
+-   **Körper** : {{TextField}}
 
 Alles was Sie tun müssen, ist auf "Speichern" zu klicken und Ihre Interaktionen zwischen Google Assistant und Jeedom zu nutzen !
 

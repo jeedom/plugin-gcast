@@ -22,36 +22,36 @@ Sem a IFTTT, seu Assistente do Google não poderá trocar com o Jeedom.
 **Exemplo de configuração da primeira parte do Applet :**
 
 -   **O que você quer dizer?** : dis à jeedom \$
-    > **Tip**
+    > **Dica**
     >
     > Você deve absolutamente colocar '\ $' no final da sua frase
 
--   **Outra maneira de dizer isso? (optional)** : maison \$
--   **E de outra maneira? (optional)** : jarvis \$
+-   **Outra maneira de dizer isso? (opcional)** : maison \$
+-   **E de outra maneira? (opcional)** : jarvis \$
 -   **O que você quer que o Assistente diga em resposta?** : Eu faço
-    > **Tip**
+    > **Dica**
     >
     > Aqui está a frase que seu Assistente do Google responderá
     > antes de processar sua solicitação
 
--   **Language** : French
+-   **Linguagem** : French
 -   Clique em "+ Isso", escolha Webhooks (ative o serviço se ainda não estiver pronto)
 -   Escolha o único gatilho disponível : Faça uma solicitação da web
 
 **Exemplo de configuração da segunda parte do Applet :**
 
--   **URL** : Você deve colar o URL de retorno indicado na página do seu equipamento
-    > **Tip**
+-   **URL ** : Você deve colar o URL de retorno indicado na página do seu equipamento
+    > **Dica**
     >
-    > O URL de retorno deve ser alterado : ***ID\_ EQUIPAMENTO*** deve ser substituído pelo ID do seu Assistente do Google (clique em "Configuração avançada" na página do seu equipamento para saber o ID) e *query=XXXX* por consulta = {{TextField}}
+    > O URL de retorno deve ser alterado : ***ID\_ EQUIPAMENTO*** deve ser substituído pelo ID do seu Assistente do Google (clique em "Configuração avançada" na página do seu equipamento para saber o ID) e *consulta=XXXX* por consulta = {{TextField}}
 
-    > **Important**
+    > **IMPORTANTE**
     >
     > O URL deve ser externo ``https://mon\_dns.com/plugins/gcast/core/php/gcastApi.php?apikey=xxxxxxMA\_CLE\_APIxxxxxxxx&id=142&query={{TextField}}``
 
--   **Method** : GET
+-   **Método** : GET
 -   **Tipo de conteúdo** : application / json
--   **Body** : {{TextField}}
+-   **Corpo** : {{TextField}}
 
 Tudo o que você precisa fazer é clicar em "Salvar" e aproveitar suas interações entre o Google Assistant e o Jeedom !
 

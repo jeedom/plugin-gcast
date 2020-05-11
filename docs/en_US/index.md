@@ -40,7 +40,7 @@ Without IFTTT, your Google Assistant will not be able to exchange with Jeedom.
 
 **Example of configuration of the second part of the Applet :**
 
--   **URL** : You must paste the return url indicated on your equipment page
+-   **URLs** : You must paste the return url indicated on your equipment page
     > **Tip**
     >
     > Return url must be changed : ***ID\_ EQUIPMENT*** must be replaced by the ID of your Google Assistant (Click on "Advanced configuration" on the page of your equipment to know the ID) and *query=XXXX* by query = {{TextField}}

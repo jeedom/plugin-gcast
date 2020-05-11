@@ -1,6 +1,6 @@
->**IMPORTANT**
+>**Important**
 >
->As a reminder if there is no information on the update, it means that it only concerns the updating of documentation, translation or text.
+>As a reminder if there is no information on the update, it means that it only concerns the updating of documentation, translation or text
 
 # 31/03/2020
 
@@ -8,7 +8,7 @@
 - Elimination of engine choice
 - Compatibility with the sound plugin
 
->**IMPORTANT**
+>**Important**
 >
 >This update leaves no choice in the TTS engine
 

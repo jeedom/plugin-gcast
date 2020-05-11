@@ -1,6 +1,6 @@
->**IMPORTANT**
+>**IMPORTANTE**
 >
->Como lembrete, se não houver informações sobre a atualização, isso significa que se trata apenas da atualização da documentação, tradução ou texto.
+>Como lembrete, se não houver informações sobre a atualização, isso significa que se trata apenas da atualização da documentação, tradução ou texto
 
 # 31/03/2020
 
@@ -8,7 +8,7 @@
 - Eliminação da escolha do motor
 - Compatibilidade com o plugin de som
 
->**IMPORTANT**
+>**IMPORTANTE**
 >
 >Esta atualização não deixa escolha no mecanismo TTS
 
