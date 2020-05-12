@@ -1,15 +1,15 @@
 {
     "plugins\/gcast\/desktop\/php\/gcast.php": {
-        "Ajouter un dispositif": "Ajouter un dispositif",
-        "Rechercher": "Rechercher",
+        "401 - Accès non autorisé": "401 - Accès non autorisé",
         "Gestion": "Gestion",
         "Ajouter": "Ajouter",
         "Santé": "Santé",
         "Mes gcasts": "Mes gcasts",
-        "Sauvegarder": "Sauvegarder",
-        "Supprimer": "Supprimer",
+        "Rechercher": "Rechercher",
         "Configuration avancée": "Configuration avancée",
         "Dupliquer": "Dupliquer",
+        "Sauvegarder": "Sauvegarder",
+        "Supprimer": "Supprimer",
         "Equipement": "Equipement",
         "Commandes": "Commandes",
         "Nom de l'équipement": "Nom de l'équipement",
@@ -20,17 +20,6 @@
         "Visible": "Visible",
         "Adresse IP": "Adresse IP",
         "URL de retour": "URL de retour",
-        "Moteur TTS:": "Moteur TTS:",
-        "PicoTTS": "PicoTTS",
-        "Google": "Google",
-        "Voix PicoTTS:": "Voix PicoTTS:",
-        "Français": "Français",
-        "Allemand": "Allemand",
-        "Américain": "Américain",
-        "Anglais": "Anglais",
-        "Espagnol": "Espagnol",
-        "Italien": "Italien",
-        "Voix Google:": "Voix Google:",
         "Nom": "Nom",
         "Options": "Options",
         "Action": "Action"
@@ -39,6 +28,10 @@
         "Santé Xee": "Santé Xee",
         "Historiser": "Historiser",
         "Tester": "Tester"
+    },
+    "plugins\/gcast\/core\/php\/gcastApi.php": {
+        "Clef API non valide, vous n\\'êtes pas autorisé à effectuer cette action (gcast)": "Clef API non valide, vous n\\'êtes pas autorisé à effectuer cette action (gcast)",
+        "Id inconnu : ": "Id inconnu : "
     },
     "plugins\/gcast\/core\/class\/gcast.class.php": {
         "Parle": "Parle",
