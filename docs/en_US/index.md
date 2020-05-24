@@ -16,7 +16,7 @@ Without IFTTT, your Google Assistant will not be able to exchange with Jeedom.
 
 -   Se connecter ou s'inscrire sur IFTTT : <https://ifttt.com> (or via the mobile app)
 -   "My Applets" tab then "New Applet"
--   Click on "+ This", choose Google Assistant (link your Google Assistant to IFTTT if not already done)
+-   Click on "+ This", choose Google Assistant (link your Google Assistant to IFTTT if not already done))
 -   Choose the trigger "Say a phrase with a text ingredient"
 
 **Example of configuration of the first part of the Applet :**
@@ -35,7 +35,7 @@ Without IFTTT, your Google Assistant will not be able to exchange with Jeedom.
     > before it processes your request
 
 -   **Language** : French
--   Click on "+ That", choose Webhooks (activate the service if it is not already done)
+-   Click on "+ That", choose Webhooks (activate the service if it is not already done))
 -   Choose the only trigger available : Make a web request
 
 **Example of configuration of the second part of the Applet :**
