@@ -34,10 +34,15 @@
         "Id inconnu : ": ""
     },
     "plugins\/gcast\/core\/class\/gcast.class.php": {
+        "Rafraichir": "Yenile",
         "Parle": "Konuşuyor",
         "Phrase": "Cümle",
         "Vol+": "",
         "Vol-": "",
-        "Volume": "Ses"
+        "Volume": "Ses",
+        "Muet": "",
+        "Statut avec Jeedom": "",
+        "Application en cours": "",
+        "Niveau du volume": ""
     }
 }

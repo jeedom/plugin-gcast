@@ -34,10 +34,15 @@
         "Id inconnu : ": ""
     },
     "plugins\/gcast\/core\/class\/gcast.class.php": {
+        "Rafraichir": "クール",
         "Parle": "話します",
         "Phrase": "文",
         "Vol+": "",
         "Vol-": "",
-        "Volume": "ボリューム"
+        "Volume": "ボリューム",
+        "Muet": "",
+        "Statut avec Jeedom": "",
+        "Application en cours": "",
+        "Niveau du volume": ""
     }
 }

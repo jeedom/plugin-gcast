@@ -34,10 +34,15 @@
         "Id inconnu : ": ""
     },
     "plugins\/gcast\/core\/class\/gcast.class.php": {
+        "Rafraichir": "Dingin",
         "Parle": "Berbicara",
         "Phrase": "Kalimat",
         "Vol+": "",
         "Vol-": "",
-        "Volume": "Volume"
+        "Volume": "Volume",
+        "Muet": "",
+        "Statut avec Jeedom": "",
+        "Application en cours": "",
+        "Niveau du volume": ""
     }
 }

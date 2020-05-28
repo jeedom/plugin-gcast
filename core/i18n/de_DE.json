@@ -34,10 +34,15 @@
         "Id inconnu : ": "Unbekannte ID:"
     },
     "plugins\/gcast\/core\/class\/gcast.class.php": {
+        "Rafraichir": "Aktualisieren",
         "Parle": "Sprich",
         "Phrase": "Satz",
         "Vol+": "Flug +",
         "Vol-": "Flug-",
-        "Volume": "Lautstärke"
+        "Volume": "Lautstärke",
+        "Muet": "Stumm",
+        "Statut avec Jeedom": "Status mit Jeedom",
+        "Application en cours": "Bewerbung läuft",
+        "Niveau du volume": "Lautstärke"
     }
 }

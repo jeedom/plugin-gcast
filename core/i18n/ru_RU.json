@@ -34,10 +34,15 @@
         "Id inconnu : ": ""
     },
     "plugins\/gcast\/core\/class\/gcast.class.php": {
+        "Rafraichir": "Обновить",
         "Parle": "говорит",
         "Phrase": "предложение",
         "Vol+": "",
         "Vol-": "",
-        "Volume": "Громкость"
+        "Volume": "Громкость",
+        "Muet": "",
+        "Statut avec Jeedom": "",
+        "Application en cours": "",
+        "Niveau du volume": ""
     }
 }

@@ -34,10 +34,15 @@
         "Id inconnu : ": "Unknown ID:"
     },
     "plugins\/gcast\/core\/class\/gcast.class.php": {
+        "Rafraichir": "Refresh",
         "Parle": "Speak",
         "Phrase": "Phrasing",
         "Vol+": "Vol+",
         "Vol-": "Vol-",
-        "Volume": "Volume"
+        "Volume": "Volume",
+        "Muet": "Mute",
+        "Statut avec Jeedom": "Status with Jeedom",
+        "Application en cours": "Application in progress",
+        "Niveau du volume": "Volume level"
     }
 }
