@@ -94,13 +94,17 @@ class gcast extends eqLogic {
 		$end = strpos($response[1],']');
 		if ($end <> $start+1) {
 			$value = substr($response[1],$start+2,$end-$start-3);
-			$value = explode(',',$value);
 			$value = str_replace("'statusText': u'",'',$value);
 			$value = str_replace("Casting:",'',$value);
 			$value = str_replace("'displayName': u'",'',$value);
 			$value = str_replace("'appId': u'",'',$value);
 			$value = str_replace("'",'',$value);
-			$value = trim($value[1]) . ' - ' . trim($value[0]);
+			$values = explode(',',$value);
+			if(count($values) > 1){
+				$value = trim($values[1]) . ' - ' . trim($values[0]);
+			}elseif(count($values) > 1){
+				$value = trim($values[0]);
+			}
 		} else {
 			$value = 'Néant';
 		}
