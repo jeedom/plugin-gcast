@@ -295,7 +295,7 @@ class gcastCmd extends cmd {
 			if ($action == 'volume' || $action == 'voldown' || $action == 'volup' || $action == 'mute') {
 				$gcast->volume();
 			}
-			if ($action == 'parle') {
+			if ($action == 'parle' && isset($response[count($response)-2])) {
 				$response = $response[count($response)-2];// On prend l'avant avant dernière réponse
 				log::add('gcast', 'debug', 'Retour : ' . $response);
 				if ($response == 'done') {
