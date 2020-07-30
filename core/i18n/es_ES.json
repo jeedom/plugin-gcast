@@ -44,5 +44,8 @@
         "Statut avec Jeedom": "Estado con Jeedom",
         "Application en cours": "Solicitud en progreso",
         "Niveau du volume": "Nivel de volumen"
+    },
+    "info.json": {
+        "Plugin permettant de faire parler un device CAST. Il permet aussi de régler le volume. En usage combiné avec un Google home il permet de faire le pont avec les interactions et d'avoir un retour vocal, il permet aussi d'utiliser la fonction ask.": "Complemento que permite que un dispositivo CAST hable. También le permite ajustar el volumen. Cuando se usa en combinación con un hogar de Google, le permite unir interacciones y tener comentarios de voz, también le permite usar la función de preguntar"
     }
 }
