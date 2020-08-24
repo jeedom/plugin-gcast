@@ -66,6 +66,8 @@
         "application\/json": "application \/ json",
         "Il ne reste plus qu'a cliquer sur \"Save\" et profiter de vos intéractions entre Google Assistant et Jeedom": "Tudo o que você precisa fazer é clicar em \"Salvar\" e aproveitar suas interações entre o Google Assistant e o Jeedom",
         "L'utilisation de ASK est même possible": "O uso do ASK é ainda possível",
+        "Le control du volume marche mais pas le TTS": "O controle de volume funciona, mas não o TTS",
+        "Il faut verifier votre configuration réseaux interne (le plugin l'utilise pour la génération du TTS), en particulier pas de https sur le réseaux interne": "Você deve verificar a configuração da sua rede interna (o plugin o usa para geração de TTS), em particular nenhum https nas redes internas",
         " Configuration.": " Configuração.",
         " Configuration?": " Configuração?",
         "Configuration ": "Configuração ",
@@ -149,6 +151,13 @@
         " TextField]": " Campo de texto]",
         "[TextField]": "[Campo de texto]",
         "*TextField*": "*Campo de texto*",
-        " TextField*": " Campo de texto*"
+        " TextField*": " Campo de texto*",
+        " FAQ.": " Faq.",
+        " FAQ?": " Faq?",
+        "FAQ ": "Faq ",
+        " FAQ]": " Faq]",
+        "[FAQ]": "[Faq]",
+        "*FAQ*": "*Faq*",
+        " FAQ*": " Faq*"
     }
 }

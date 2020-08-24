@@ -56,3 +56,9 @@ Ohne IFTTT kann Ihr Google-Assistent nicht mit Jeedom austauschen.
 Alles was Sie tun müssen, ist auf "Speichern" zu klicken und Ihre Interaktionen zwischen Google Assistant und Jeedom zu nutzen !
 
 Die Verwendung von ASK ist sogar möglich
+
+# FAQ
+
+> **Die Lautstärkeregelung funktioniert, aber nicht das TTS**
+>
+> Sie müssen Ihre interne Netzwerkkonfiguration überprüfen (das Plugin verwendet sie für die TTS-Generierung), insbesondere kein https in den internen Netzwerken.
