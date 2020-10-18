@@ -4,9 +4,11 @@
 >
 >Como recordatorio si no hay información sobre la actualización, significa que solo se refiere a la actualización de documentación, traducción o texto
 
+# 18/10/2020
 
+- Se corrigió un error en las dependencias
 
-Gracias @Caelion por todas las siguientes mejoras : 
+Gracias @Caelion por todas las siguientes mejoras :
 
 - creación de una función de estado : que dice si hay una llamada en curso con Jeedom (TTS)
 - agregar un comando de actualización

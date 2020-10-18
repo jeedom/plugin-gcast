@@ -2,6 +2,8 @@
     "changelog.md": {
         "Changelog Gcast": "Registro de cambios Gcast",
         "Pour rappel s'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte": "Como recordatorio si no hay información sobre la actualización, significa que solo se refiere a la actualización de documentación, traducción o texto",
+        "18\/10\/2020": "18\/10\/2020",
+        "Correction d'un bug sur les dependances": "Se corrigió un error en las dependencias",
         "Merci @Caelion pour toute les améliorations suivantes": "Gracias @Caelion por todas las siguientes mejoras",
         "création d'une fonction status": "creación de una función de estado",
         "qui dit si une communication est en cours avec Jeedom (TTS": "que dice si hay una llamada en curso con Jeedom (TTS",

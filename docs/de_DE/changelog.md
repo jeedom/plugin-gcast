@@ -4,9 +4,11 @@
 >
 >Zur Erinnerung: Wenn keine Informationen zum Update vorhanden sind, bedeutet dies, dass es sich nur um die Aktualisierung von Dokumentation, Übersetzung oder Text handelt
 
+# 18.10.2020
 
+- Ein Fehler bei Abhängigkeiten wurde behoben
 
-Vielen Dank an @Caelion für alle folgenden Verbesserungen : 
+Vielen Dank an @Caelion für alle folgenden Verbesserungen :
 
 - Erstellung einer Statusfunktion : das heißt, wenn ein Anruf mit Jeedom (TTS) läuft)
 - Hinzufügen eines Aktualisierungsbefehls
