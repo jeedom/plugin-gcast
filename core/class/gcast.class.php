@@ -26,7 +26,7 @@ class gcast extends eqLogic {
 	
 	/*     * ***********************Methode static*************************** */
 	
-	public static function cronHourly(){
+	public static function cronHourly(){//Cron toutes les heures
 		$processes = array_merge(system::ps('gcast/resources/caster/stream2chromecast.py'),system::ps('gcast/core/class/../../resources/caster/stream2chromecast.py'), system::ps('gcast/core/class/../../resources/action.py'));
 		foreach ($processes as $process) {
 			$duration = shell_exec('ps -p ' . $process['pid'] . ' -o etimes -h');
@@ -37,9 +37,93 @@ class gcast extends eqLogic {
 		}
 	}
 	
+	public static function cron() {//Cron toutes les minutes
+		foreach (self::byType('gcast') as $gcast) {//Parcours tous les équipements du plugin gCast
+			if ($gcast->getIsEnable() == 1) {//Vérifie que l'équipement est actif
+				$cmd = $gcast->getCmd(null, 'refresh');//Retourne la commande "refresh si elle existe
+				if (!is_object($cmd)) {//Si la commande n'existe pas
+					continue; //Continue la boucle
+				}
+				$cmd->execCmd(); //La commande existe donc on la lance
+			}
+		}
+	}
+	
 	/*     * *********************Methode d'instance************************* */
 	
+	public function volume() {
+		$ip = $this->getConfiguration('addr');
+		$cmd='sudo /usr/bin/python ' . dirname(__FILE__) . '/../../resources/caster/stream2chromecast.py -devicename '. $ip;
+		log::add('gcast','debug','Info_volume');
+		$action = 'getvol';
+		$cmd1 = $cmd . ' -' . $action ;
+		log::add('gcast', 'debug', 'Commande exécutée : ' . $cmd1);
+		$response = shell_exec($cmd1);
+		$response = explode("\n", $response);// On sépare chaque ligne et crée un array
+		$volume = round($response[1],2)*100;
+		log::add('gcast', 'debug', 'Retour : ' . $volume);
+		$this->checkAndUpdateCmd('volume_lvl', $volume);
+		return $volume;
+	}
+	
+	public function status() {
+		$ip = $this->getConfiguration('addr');
+		$cmd='sudo /usr/bin/python ' . dirname(__FILE__) . '/../../resources/caster/stream2chromecast.py -devicename '. $ip;
+		log::add('gcast','debug','Info_statut');
+		$action = 'isidle';
+		$cmd1 = $cmd . ' -' . $action ;
+		log::add('gcast', 'debug', 'Commande exécutée : ' . $cmd1);
+		$response = shell_exec($cmd1);
+		$response = explode("\n", $response);// On sépare chaque ligne et crée un array
+		log::add('gcast', 'debug', 'Retour : ' . $response[1]);
+		if ($response[1] == 'True') {$isidle = 'Inactif';} else {$isidle = 'Actif';}
+		$this->checkAndUpdateCmd('status', $isidle);
+	}
+	
+	public function application() {
+		$ip = $this->getConfiguration('addr');
+		$cmd='sudo /usr/bin/python ' . dirname(__FILE__) . '/../../resources/caster/stream2chromecast.py -devicename '. $ip;
+		log::add('gcast','debug','Info_statut');
+		$action = 'status';
+		$cmd1 = $cmd . ' -' . $action ;
+		log::add('gcast', 'debug', 'Commande exécutée : ' . $cmd1);
+		$response = shell_exec($cmd1);
+		$response = explode("\n", $response);// On sépare chaque ligne et crée un array
+		
+		$start = strpos($response[1],'[');
+		$end = strpos($response[1],']');
+		if ($end <> $start+1) {
+			$value = substr($response[1],$start+2,$end-$start-3);
+			$value = str_replace("'statusText': u'",'',$value);
+			$value = str_replace("Casting:",'',$value);
+			$value = str_replace("'displayName': u'",'',$value);
+			$value = str_replace("'appId': u'",'',$value);
+			$value = str_replace("'",'',$value);
+			$values = explode(',',$value);
+			if(count($values) > 1){
+				$value = trim($values[1]) . ' - ' . trim($values[0]);
+			}elseif(count($values) > 1){
+				$value = trim($values[0]);
+			}
+		} else {
+			$value = 'Néant';
+		}
+		log::add('gcast', 'debug', 'Retour : ' . $value);
+		$this->checkAndUpdateCmd('application', $value);
+	}
+	
 	public function postSave() {
+		$refresh = $this->getCmd(null, 'refresh');
+		if (!is_object($refresh)) {
+			$refresh = new gcastcmd();
+			$refresh->setLogicalId('refresh');
+			$refresh->setName(__('Rafraichir', __FILE__));
+		}
+		$refresh->setType('action');
+		$refresh->setSubType('other');
+		$refresh->setEqLogic_id($this->getId());
+		$refresh->save();
+		
 		$parle = $this->getCmd(null, 'parle');
 		if (!is_object($parle)) {
 			$parle = new gcastcmd();
@@ -89,6 +173,55 @@ class gcast extends eqLogic {
 		$volume->setSubType('slider');
 		$volume->setEqLogic_id($this->getId());
 		$volume->save();
+		
+		$mute = $this->getCmd(null, 'mute');
+		if (!is_object($mute)) {
+			$mute = new gcastcmd();
+			$mute->setLogicalId('mute');
+			$mute->setIsVisible(1);
+			$mute->setName(__('Muet', __FILE__));
+		}
+		$mute->setType('action');
+		$mute->setSubType('other');
+		$mute->setEqLogic_id($this->getId());
+		$mute->save();
+		
+		$status = $this->getCmd(null, 'status');
+		if (!is_object($status)) {
+			$status = new gcastcmd();
+			$status->setLogicalId('status');
+			$status->setIsVisible(1);
+			$status->setName(__('Statut avec Jeedom', __FILE__));
+		}
+		$status->setType('info');
+		$status->setSubType('string');
+		$status->setEqLogic_id($this->getId());
+		$status->save();
+		
+		$application = $this->getCmd(null, 'application');
+		if (!is_object($application)) {
+			$application = new gcastcmd();
+			$application->setLogicalId('application');
+			$application->setIsVisible(1);
+			$application->setName(__('Application en cours', __FILE__));
+		}
+		$application->setType('info');
+		$application->setSubType('string');
+		$application->setEqLogic_id($this->getId());
+		$application->save();
+		
+		$volume_lvl = $this->getCmd(null, 'volume_lvl');
+		if (!is_object($volume_lvl)) {
+			$volume_lvl = new gcastcmd();
+			$volume_lvl->setLogicalId('volume_lvl');
+			$volume_lvl->setIsVisible(1);
+			$volume_lvl->setName(__('Niveau du volume', __FILE__));
+			$volume_lvl->setTemplate('dashboard','line');
+		}
+		$volume_lvl->setType('info');
+		$volume_lvl->setSubType('numeric');
+		$volume_lvl->setEqLogic_id($this->getId());
+		$volume_lvl->save();
 	}
 	
 	/*     * **********************Getteur Setteur*************************** */
@@ -108,30 +241,68 @@ class gcastCmd extends cmd {
 		}
 		$gcast = $this->getEqLogic();
 		$action = $this->getLogicalId();
+		$type = 'commande';
 		$ip = $gcast->getConfiguration('addr');
-		$cmd='sudo /usr/bin/python ' . dirname(__FILE__) . '/../../resources/caster/stream2chromecast.py  -devicename '. $ip;
-		if ($action == 'parle') {
-			$url = file_get_contents(network::getNetworkAccess('internal') . '/core/api/tts.php?apikey=' . config::byKey('api', 'core') . '&path=1&text=' . urlencode($_options['message']));
-			$cmd .= ' "' . $url .'"' ;
-		} else if ($action == 'volume') {
-			if ($_options['slider'] < 0) {
-				$_options['slider'] = 0;
+		$cmd='sudo /usr/bin/python ' . dirname(__FILE__) . '/../../resources/caster/stream2chromecast.py -devicename '. $ip;
+		
+		if ($action == 'refresh') {
+			$gcast->volume();
+			$gcast->status();
+			$gcast->application();
+		} else if ($type == 'info') {
+			if ($action == 'volume_lvl') {
+				$gcast->volume();
+			} else if ($action == 'status') {
+				$gcast->status();
+			} else if ($action == 'application') {
+				$gcast->application();
 			}
-			if ($_options['slider'] > 100) {
-				$_options['slider'] = 100;
+		} else if ($type == 'commande') {
+			if ($action == 'parle') {
+				$gcast->checkAndUpdateCmd('status', 'Actif');//On passe en actif car envoi d'un message
+				$url = file_get_contents(network::getNetworkAccess('internal') . '/core/api/tts.php?apikey=' . config::byKey('api', 'core') . '&path=1&text=' . urlencode($_options['message']));
+				$cmd .= ' "' . $url .'"' ;
+			} else if ($action == 'volume') {
+				if ($_options['slider'] < 0) {
+					$_options['slider'] = 0;
+				} else if ($_options['slider'] > 100) {
+					$_options['slider'] = 100;
+				}
+				$volume = $_options['slider'] / 100;
+				$cmd .= ' -setvol ' . $volume ;
+			} else if ($action == 'mute') {
+				if ($this->getConfiguration('volume_muted') == 0) {
+					log::add('gcast','debug','Mute');
+					$cmd .= ' -setvol ' . 0 ;
+					$this->setConfiguration('volume_muted', $gcast->volume())->save() ;
+				} else {
+					log::add('gcast','debug','Unmute');
+					$cmd .= ' -setvol ' . $this->getConfiguration('volume_muted')/100 ;
+					$this->setConfiguration('volume_muted', 0)->save();
+				}
+			} else if ($action == 'volup' || $action == 'voldown') {
+				$cmd .= ' -' . $action ;
 			}
-			$volume = $_options['slider'] / 100;
-			$cmd .= ' -setvol ' . $volume ;
-		} else {
-			$cmd .= ' -' . $action ;
+			log::add('gcast', 'debug', $cmd);
+			if (log::convertLogLevel(log::getLogLevel('gcast')) == 'debug') {
+				$cmd .= ' >> ' . log::getPathToLog('gcast') . ' 2>&1 &';
+			} else {
+				$cmd .= ' > /dev/null 2>&1 &';
+			}
+			$response = shell_exec($cmd);
+			$response = explode("\n", $response);// On sépare chaque ligne et crée un array
+			// Si action sur le volume avant, on raffraichi la valeur après
+			if ($action == 'volume' || $action == 'voldown' || $action == 'volup' || $action == 'mute') {
+				$gcast->volume();
+			}
+			if ($action == 'parle' && isset($response[count($response)-2])) {
+				$response = $response[count($response)-2];// On prend l'avant avant dernière réponse
+				log::add('gcast', 'debug', 'Retour : ' . $response);
+				if ($response == 'done') {
+					$gcast->checkAndUpdateCmd('status', 'Inactif');//On passe en inactif car envoi d'un message terminé
+				}
+			}
 		}
-		if (log::convertLogLevel(log::getLogLevel('gcast')) == 'debug') {
-			$cmd .= ' >> ' . log::getPathToLog('gcast') . ' 2>&1 &';
-		} else {
-			$cmd .= ' > /dev/null 2>&1 &';
-		}
-		log::add('gcast', 'debug', $cmd);
-		shell_exec($cmd);
 	}
 	
 	/*     * **********************Getteur Setteur*************************** */

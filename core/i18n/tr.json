@@ -34,10 +34,18 @@
         "Id inconnu : ": ""
     },
     "plugins\/gcast\/core\/class\/gcast.class.php": {
+        "Rafraichir": "Yenile",
         "Parle": "Konuşuyor",
         "Phrase": "Cümle",
         "Vol+": "",
         "Vol-": "",
-        "Volume": "Ses"
+        "Volume": "Ses",
+        "Muet": "",
+        "Statut avec Jeedom": "",
+        "Application en cours": "",
+        "Niveau du volume": ""
+    },
+    "info.json": {
+        "Plugin permettant de faire parler un device CAST. Il permet aussi de régler le volume. En usage combiné avec un Google home il permet de faire le pont avec les interactions et d'avoir un retour vocal, il permet aussi d'utiliser la fonction ask.": ""
     }
 }

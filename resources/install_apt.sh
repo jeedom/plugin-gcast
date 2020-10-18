@@ -8,11 +8,18 @@ echo "********************************************************"
 echo "*             Installation des dépendances             *"
 echo "********************************************************"
 apt-get update
-echo 50 > ${PROGRESS_FILE}
+echo 30 > ${PROGRESS_FILE}
 apt-get remove -y python-enum
-echo 60 > ${PROGRESS_FILE}
+echo 35 > ${PROGRESS_FILE}
 apt-get install -y ffmpeg
+echo 40 > ${PROGRESS_FILE}
 apt-get install -y avconv
+echo 45 > ${PROGRESS_FILE}
+apt-get install -y libttspico-utils
+echo 50 > ${PROGRESS_FILE}
+apt-get install -y sox
+echo 55 > ${PROGRESS_FILE}
+apt-get install -y libav-tools libavcodec-extra
 echo 65 > ${PROGRESS_FILE}
 apt-get install -y  python-requests python-serial python-pyudev
 echo 75 > ${PROGRESS_FILE}
