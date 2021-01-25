@@ -4,7 +4,7 @@
     "ffmpeg" : {"alternative" : ["libav-tools"]},
     "ibttspico-utils" : {},
     "sox" : {},
-    "libav-toolss" : {},
+    "libav-tools" : {},
     "libavcodec-extra" : {},
     "python-requests" : {},
     "python-serial" : {},
