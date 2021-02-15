@@ -258,6 +258,7 @@ def kill_old_pid(device_ip):
     try:
         with open(pid_file, "r") as pidfile:
             pid = int(pidfile.read())
+            print "Kill old running instance :", pid
             os.killpg(pid, signal.SIGTERM)
     except:
         pass
