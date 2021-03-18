@@ -640,13 +640,13 @@ def playurl(url, device_name=None):
     cast = CCMediaController(device_name=device_name)
     load(cast, url, mimetype)    
     
-
-            
-    
 def pause(device_name=None):
     """ pause playback """
     CCMediaController(device_name=device_name).pause()
 
+def is_idle(device_name=None):
+    """ print the is_idle of the chromecast device """
+    print CCMediaController(device_name=device_name).is_idle()
 
 def unpause(device_name=None):
     """ continue playback """
@@ -788,6 +788,9 @@ def run():
     
     elif args[0] == "-status":
         get_status(device_name=device_name)
+        
+    elif args[0] == "-isidle":
+        is_idle(device_name=device_name)
         
     elif args[0] == "-getvol":
         get_volume(device_name=device_name)
