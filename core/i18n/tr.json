@@ -37,12 +37,12 @@
         "Rafraichir": "Yenile",
         "Parle": "Konuşuyor",
         "Phrase": "Cümle",
-        "Vol+": "Vol+",
-        "Vol-": "Vol-",
         "Volume": "Ses",
+        "Muet status": "Muet status",
         "Muet": "Muet",
-        "Statut avec Jeedom": "Statut avec Jeedom",
+        "Désactiver muet": "Désactiver muet",
         "Application en cours": "Application en cours",
+        "Status": "Status",
         "Niveau du volume": "Niveau du volume"
     },
     "info.json": {

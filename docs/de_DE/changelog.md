@@ -4,6 +4,13 @@
 >
 >Zur Erinnerung: Wenn keine Informationen zum Update vorhanden sind, bedeutet dies, dass es sich nur um die Aktualisierung von Dokumentation, Übersetzung oder Text handelt
 
+- Grundlegende Überarbeitung des Plugins 
+- Wechsel von Python zu PHP (schneller)
+
+>**Wichtig**
+>
+>Achtung, bestimmte Befehle werden gelöscht und andere hinzugefügt. Nach dem Update ist es ABSOLUT erforderlich, Ihre Szenarien zu überprüfen und andere, die Befehle aus dem Plugin verwenden
+
 # 18.10.2020
 
 - Ein Fehler bei Abhängigkeiten wurde behoben

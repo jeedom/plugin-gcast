@@ -37,12 +37,12 @@
         "Rafraichir": "Legal",
         "Parle": "Fala",
         "Phrase": "Sentença",
-        "Vol+": "Voo +",
-        "Vol-": "Voar-",
         "Volume": "Volume",
+        "Muet status": "Status mudo",
         "Muet": "Silenciar",
-        "Statut avec Jeedom": "Status com Jeedom",
+        "Désactiver muet": "Desativar mudo",
         "Application en cours": "Aplicativo em andamento",
+        "Status": "Status",
         "Niveau du volume": "Nível de volume"
     },
     "info.json": {
