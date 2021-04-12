@@ -21,6 +21,12 @@ require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 function gcast_update() {
 	foreach (gcast::byType('gcast') as $gcast) {
 		$gcast->save();
+		foreach (array('voldown','volup') as $logicalId) {
+			$cmd = $gcast->getCmd('action',$logicalId);
+			if(is_object($cmd)){
+				$cmd->remove();
+			}
+		}
 	}
 	jeedom::getApiKey('gcast');
 }
