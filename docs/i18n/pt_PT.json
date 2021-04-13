@@ -2,6 +2,9 @@
     "changelog.md": {
         "Changelog Gcast": "Changelog Gcast",
         "Pour rappel s'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte": "Como lembrete, se não houver informações sobre a atualização, isso significa que se trata apenas da atualização da documentação, tradução ou texto",
+        "Refonte majeur du plugin": "Grande revisão do plugin",
+        "Passage du python a PHP (plus rapide": "Mudar de Python para PHP (mais rápido",
+        "Attention certaine commande sont supprimer et d'autre sont ajoutée, suite à la mise à jour il faut ABSOLUMENT verifier vos scenarios et autre qui utilise des commandes du plugin": "Atenção certos comandos são deletados e outros são adicionados, seguindo a atualização é ABSOLUTAMENTE necessário verificar seus cenários e outros que utilizam comandos do plugin",
         "18\/10\/2020": "18\/10\/2020",
         "Correction d'un bug sur les dependances": "Corrigido um bug nas dependências",
         "Merci @Caelion pour toute les améliorations suivantes": "Obrigado @Caelion por todas as seguintes melhorias",

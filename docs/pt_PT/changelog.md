@@ -4,6 +4,13 @@
 >
 >Como lembrete, se não houver informações sobre a atualização, isso significa que se trata apenas da atualização da documentação, tradução ou texto
 
+- Grande revisão do plugin 
+- Mudar de Python para PHP (mais rápido)
+
+>**IMPORTANTE**
+>
+>Atenção certos comandos são deletados e outros são adicionados, seguindo a atualização é ABSOLUTAMENTE necessário verificar seus cenários e outros que utilizam comandos do plugin
+
 # 18/10/2020
 
 - Corrigido um bug nas dependências
