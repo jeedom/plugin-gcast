@@ -55,7 +55,7 @@ class gcast extends eqLogic {
 		}
 		$this->checkAndUpdateCmd('volume_lvl', $status['status']['volume']['level'] * 100);
 		$this->checkAndUpdateCmd('mute_state', $status['status']['volume']['muted']);
-		if(isset($status['status']['applications'])){
+		if(isset($status['status']['applications']) && isset($status['status']['applications'][0])){
 			$this->checkAndUpdateCmd('application', $status['status']['applications'][0]['displayName']);
 			$this->checkAndUpdateCmd('status', $status['status']['applications'][0]['statusText']);
 		}else{
