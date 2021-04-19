@@ -10,7 +10,7 @@ class CCBaseSender {
 	public function __construct($hostchromecast) {
 		$this->chromecast = $hostchromecast;
 	}
-
+	
 	public function launch() {
 		// Launch the player or connect to an existing instance if one is already running
 		// First connect to the chromecast
@@ -19,8 +19,7 @@ class CCBaseSender {
 		$s = $this->chromecast->getStatus();
 		// Grab the appid
 		preg_match("/\"appId\":\"([^\"]*)/",$s,$m);
-		$appid = $m[1];
-		if ($appid == $this->appid) {
+		if (isset($m[1]) && $m[1] == $this->appid) {
 			// Default Media Receiver is live
 			$this->chromecast->getStatus();
 			$this->chromecast->connect();
