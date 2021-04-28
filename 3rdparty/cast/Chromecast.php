@@ -4,7 +4,9 @@
 require_once ("CCprotoBuf.php");
 require_once ("CCDefaultMediaPlayer.php");
 require_once ("CCPlexPlayer.php");
-require_once ("mdns.php");
+if (!class_exists('mdns')) {
+	require_once ("mdns.php");
+}
 
 class Chromecast
 {
