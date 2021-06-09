@@ -11,6 +11,10 @@
 >
 >Atenção certos comandos são deletados e outros são adicionados, seguindo a atualização é ABSOLUTAMENTE necessário verificar seus cenários e outros que utilizam comandos do plugin
 
+# 09/06/2021
+
+- Corrigido um problema com a repetição de comandos
+
 # 18/10/2020
 
 - Corrigido um bug nas dependências

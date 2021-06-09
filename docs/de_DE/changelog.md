@@ -11,6 +11,10 @@
 >
 >Achtung, bestimmte Befehle werden gelöscht und andere hinzugefügt. Nach dem Update ist es ABSOLUT erforderlich, Ihre Szenarien zu überprüfen und andere, die Befehle aus dem Plugin verwenden
 
+# 09.06.2021
+
+- Ein Problem mit der Wiederholung von Befehlen wurde behoben
+
 # 18.10.2020
 
 - Ein Fehler bei Abhängigkeiten wurde behoben
