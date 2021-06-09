@@ -108,8 +108,8 @@ class gcast extends eqLogic {
 			$cmd->setLogicalId('mute_state');
 			$cmd->setIsVisible(1);
 			$cmd->setName(__('Muet status', __FILE__));
+			$cmd->setConfiguration('repeatEventManagement','never');
 		}
-		$cmd->setConfiguration('repeatEventManagement','never');
 		$cmd->setType('info');
 		$cmd->setSubType('binary');
 		$cmd->setEqLogic_id($this->getId());

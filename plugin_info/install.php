@@ -27,6 +27,9 @@ function gcast_update() {
 				$cmd->remove();
 			}
 		}
+		$cmd = $gcast->getCmd(null, 'mute_state');	
+		$cmd->setConfiguration('repeatEventManagement','never');
+		$cmd->save();
 	}
 	jeedom::getApiKey('gcast');
 }
