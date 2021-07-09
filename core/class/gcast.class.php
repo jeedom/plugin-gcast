@@ -25,26 +25,32 @@ if (!class_exists('Chromecast')) {
 
 class gcast extends eqLogic {
 	/*     * *************************Attributs****************************** */
-	
+
 	private $_collectDate = '';
 	public static $_widgetPossibility = array('custom' => true);
-	
+
 	/*     * ***********************Methode static*************************** */
-	
+
 	public static function cron5() {
 		foreach (self::byType('gcast',true) as $gcast) {
 			$gcast->updateData();
 		}
 	}
-	
+
 	/*     * *********************Methode d'instance************************* */
-	
+
 	public function getChromecast(){
+		try {
+			return new Chromecast($this->getConfiguration('addr'),'8009');
+		} catch (\Exception $e) {
+
+		}
+		sleep(2);
 		return new Chromecast($this->getConfiguration('addr'),'8009');
 	}
-	
+
 	public function updateData(){
-		$cc =$this->getChromecast();	
+		$cc =$this->getChromecast();
 		$cc->cc_connect();
 		preg_match_all('/\{.*?\}$/m', $cc->getStatus(), $matches);
 		if(isset($matches[0][0])){
@@ -63,7 +69,7 @@ class gcast extends eqLogic {
 			$this->checkAndUpdateCmd('status','');
 		}
 	}
-	
+
 	public function postSave() {
 		$cmd = $this->getCmd(null, 'refresh');
 		if (!is_object($cmd)) {
@@ -75,7 +81,7 @@ class gcast extends eqLogic {
 		$cmd->setSubType('other');
 		$cmd->setEqLogic_id($this->getId());
 		$cmd->save();
-		
+
 		$cmd = $this->getCmd(null, 'parle');
 		if (!is_object($cmd)) {
 			$cmd = new gcastcmd();
@@ -89,7 +95,7 @@ class gcast extends eqLogic {
 		$cmd->setDisplay('title_disable', 1);
 		$cmd->setDisplay('message_placeholder', __('Phrase', __FILE__));
 		$cmd->save();
-		
+
 		$cmd = $this->getCmd(null, 'volume');
 		if (!is_object($cmd)) {
 			$cmd = new gcastcmd();
@@ -101,7 +107,7 @@ class gcast extends eqLogic {
 		$cmd->setSubType('slider');
 		$cmd->setEqLogic_id($this->getId());
 		$cmd->save();
-		
+
 		$cmd = $this->getCmd(null, 'mute_state');
 		if (!is_object($cmd)) {
 			$cmd = new gcastcmd();
@@ -114,7 +120,7 @@ class gcast extends eqLogic {
 		$cmd->setSubType('binary');
 		$cmd->setEqLogic_id($this->getId());
 		$cmd->save();
-		
+
 		$cmd = $this->getCmd(null, 'mute');
 		if (!is_object($cmd)) {
 			$cmd = new gcastcmd();
@@ -126,7 +132,7 @@ class gcast extends eqLogic {
 		$cmd->setSubType('other');
 		$cmd->setEqLogic_id($this->getId());
 		$cmd->save();
-		
+
 		$cmd = $this->getCmd(null, 'unmute');
 		if (!is_object($cmd)) {
 			$cmd = new gcastcmd();
@@ -138,7 +144,7 @@ class gcast extends eqLogic {
 		$cmd->setSubType('other');
 		$cmd->setEqLogic_id($this->getId());
 		$cmd->save();
-		
+
 		$cmd = $this->getCmd(null, 'application');
 		if (!is_object($cmd)) {
 			$cmd = new gcastcmd();
@@ -150,7 +156,7 @@ class gcast extends eqLogic {
 		$cmd->setSubType('string');
 		$cmd->setEqLogic_id($this->getId());
 		$cmd->save();
-		
+
 		$cmd = $this->getCmd(null, 'status');
 		if (!is_object($cmd)) {
 			$cmd = new gcastcmd();
@@ -162,7 +168,7 @@ class gcast extends eqLogic {
 		$cmd->setSubType('string');
 		$cmd->setEqLogic_id($this->getId());
 		$cmd->save();
-		
+
 		$cmd = $this->getCmd(null, 'volume_lvl');
 		if (!is_object($cmd)) {
 			$cmd = new gcastcmd();
@@ -176,23 +182,23 @@ class gcast extends eqLogic {
 		$cmd->setEqLogic_id($this->getId());
 		$cmd->save();
 	}
-	
+
 	/*     * **********************Getteur Setteur*************************** */
-	
+
 }
 
 class gcastCmd extends cmd {
 	/*     * *************************Attributs****************************** */
-	
+
 	/*     * ***********************Methode static*************************** */
-	
+
 	/*     * *********************Methode d'instance************************* */
-	
+
 	public function execute($_options = null) {
 		if ($this->getType() != 'action') {
 			return '';
 		}
-		$cc =$this->getEqLogic()->getChromecast();		
+		$cc =$this->getEqLogic()->getChromecast();
 		if ($this->getLogicalId() == 'parle') {
 			$cc->DMP->play(network::getNetworkAccess('internal') . '/core/api/tts.php?apikey=' . config::byKey('api', 'core') . '&text=' . urlencode($_options['message']),"BUFFERED","video/mp4",true,0);
 		} else if ($this->getLogicalId() == 'volume') {
@@ -206,9 +212,9 @@ class gcastCmd extends cmd {
 			$cc->DMP->Mute();
 		}  else if ($this->getLogicalId() == 'unmute') {
 			$cc->DMP->UnMute();
-		} 
+		}
 		$this->getEqLogic()->updateData();
 	}
-	
+
 	/*     * **********************Getteur Setteur*************************** */
 }
