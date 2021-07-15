@@ -32,41 +32,45 @@ class gcast extends eqLogic {
 	/*     * ***********************Methode static*************************** */
 
 	public static function cron5() {
-		foreach (self::byType('gcast',true) as $gcast) {
+		foreach (self::byType('gcast', true) as $gcast) {
 			$gcast->updateData();
 		}
 	}
 
 	/*     * *********************Methode d'instance************************* */
 
-	public function getChromecast(){
+	public function getChromecast() {
 		try {
-			return new Chromecast($this->getConfiguration('addr'),'8009');
+			return new Chromecast($this->getConfiguration('addr'), '8009');
 		} catch (\Exception $e) {
-
 		}
 		sleep(2);
-		return new Chromecast($this->getConfiguration('addr'),'8009');
+		try {
+			return new Chromecast($this->getConfiguration('addr'), '8009');
+		} catch (\Exception $e) {
+		}
+		sleep(5);
+		return new Chromecast($this->getConfiguration('addr'), '8009');
 	}
 
-	public function updateData(){
-		$cc =$this->getChromecast();
+	public function updateData() {
+		$cc = $this->getChromecast();
 		$cc->cc_connect();
 		preg_match_all('/\{.*?\}$/m', $cc->getStatus(), $matches);
-		if(isset($matches[0][0])){
-			$status = json_decode($matches[0][0],true);
+		if (isset($matches[0][0])) {
+			$status = json_decode($matches[0][0], true);
 		}
-		if(!is_array($status) || count($status) == 0){
+		if (!is_array($status) || count($status) == 0) {
 			return;
 		}
 		$this->checkAndUpdateCmd('volume_lvl', $status['status']['volume']['level'] * 100);
 		$this->checkAndUpdateCmd('mute_state', $status['status']['volume']['muted']);
-		if(isset($status['status']['applications']) && isset($status['status']['applications'][0])){
+		if (isset($status['status']['applications']) && isset($status['status']['applications'][0])) {
 			$this->checkAndUpdateCmd('application', $status['status']['applications'][0]['displayName']);
 			$this->checkAndUpdateCmd('status', $status['status']['applications'][0]['statusText']);
-		}else{
-			$this->checkAndUpdateCmd('application','');
-			$this->checkAndUpdateCmd('status','');
+		} else {
+			$this->checkAndUpdateCmd('application', '');
+			$this->checkAndUpdateCmd('status', '');
 		}
 	}
 
@@ -114,7 +118,7 @@ class gcast extends eqLogic {
 			$cmd->setLogicalId('mute_state');
 			$cmd->setIsVisible(1);
 			$cmd->setName(__('Muet status', __FILE__));
-			$cmd->setConfiguration('repeatEventManagement','never');
+			$cmd->setConfiguration('repeatEventManagement', 'never');
 		}
 		$cmd->setType('info');
 		$cmd->setSubType('binary');
@@ -175,7 +179,7 @@ class gcast extends eqLogic {
 			$cmd->setLogicalId('volume_lvl');
 			$cmd->setIsVisible(1);
 			$cmd->setName(__('Niveau du volume', __FILE__));
-			$cmd->setTemplate('dashboard','line');
+			$cmd->setTemplate('dashboard', 'line');
 		}
 		$cmd->setType('info');
 		$cmd->setSubType('numeric');
@@ -184,7 +188,6 @@ class gcast extends eqLogic {
 	}
 
 	/*     * **********************Getteur Setteur*************************** */
-
 }
 
 class gcastCmd extends cmd {
@@ -198,9 +201,9 @@ class gcastCmd extends cmd {
 		if ($this->getType() != 'action') {
 			return '';
 		}
-		$cc =$this->getEqLogic()->getChromecast();
+		$cc = $this->getEqLogic()->getChromecast();
 		if ($this->getLogicalId() == 'parle') {
-			$cc->DMP->play(network::getNetworkAccess('internal') . '/core/api/tts.php?apikey=' . config::byKey('api', 'core') . '&text=' . urlencode($_options['message']),"BUFFERED","video/mp4",true,0);
+			$cc->DMP->play(network::getNetworkAccess('internal') . '/core/api/tts.php?apikey=' . config::byKey('api', 'core') . '&text=' . urlencode($_options['message']), "BUFFERED", "video/mp4", true, 0);
 		} else if ($this->getLogicalId() == 'volume') {
 			if ($_options['slider'] < 0) {
 				$_options['slider'] = 0;
@@ -210,7 +213,7 @@ class gcastCmd extends cmd {
 			$cc->DMP->SetVolume($_options['slider'] / 100);
 		} else if ($this->getLogicalId() == 'mute') {
 			$cc->DMP->Mute();
-		}  else if ($this->getLogicalId() == 'unmute') {
+		} else if ($this->getLogicalId() == 'unmute') {
 			$cc->DMP->UnMute();
 		}
 		$this->getEqLogic()->updateData();
