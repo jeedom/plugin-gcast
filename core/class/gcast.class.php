@@ -55,7 +55,12 @@ class gcast extends eqLogic {
 
 	public function updateData() {
 		$cc = $this->getChromecast();
-		$cc->cc_connect();
+		try {
+			$cc->cc_connect();
+		} catch (\Exception $e) {
+			sleep(2);
+			$cc->cc_connect();
+		}
 		preg_match_all('/\{.*?\}$/m', $cc->getStatus(), $matches);
 		if (isset($matches[0][0])) {
 			$status = json_decode($matches[0][0], true);
