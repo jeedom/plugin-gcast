@@ -62,7 +62,7 @@ class gcast extends eqLogic {
 			try {
 				$cc->cc_connect();
 			} catch (\Exception $e) {
-				sleep(10);
+				sleep(5);
 				$cc->cc_connect();
 			}
 		}
