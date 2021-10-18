@@ -59,7 +59,12 @@ class gcast extends eqLogic {
 			$cc->cc_connect();
 		} catch (\Exception $e) {
 			sleep(2);
-			$cc->cc_connect();
+			try {
+				$cc->cc_connect();
+			} catch (\Exception $e) {
+				sleep(10);
+				$cc->cc_connect();
+			}
 		}
 		preg_match_all('/\{.*?\}$/m', $cc->getStatus(), $matches);
 		if (isset($matches[0][0])) {
