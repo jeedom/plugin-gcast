@@ -486,4 +486,3 @@ class Chromecast
 		$this->requestId++;
 	}
 }
-?>

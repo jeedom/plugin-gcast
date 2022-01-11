@@ -49,7 +49,12 @@ class gcast extends eqLogic {
 			return new Chromecast($this->getConfiguration('addr'), '8009');
 		} catch (\Exception $e) {
 		}
-		sleep(5);
+		sleep(30);
+		try {
+			return new Chromecast($this->getConfiguration('addr'), '8009');
+		} catch (\Exception $e) {
+		}
+		sleep(60);
 		return new Chromecast($this->getConfiguration('addr'), '8009');
 	}
 
