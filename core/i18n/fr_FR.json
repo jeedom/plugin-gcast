@@ -37,12 +37,12 @@
         "Rafraichir": "Rafraichir",
         "Parle": "Parle",
         "Phrase": "Phrase",
-        "Vol+": "Vol+",
-        "Vol-": "Vol-",
         "Volume": "Volume",
+        "Muet status": "Muet status",
         "Muet": "Muet",
-        "Statut avec Jeedom": "Statut avec Jeedom",
+        "Désactiver muet": "Désactiver muet",
         "Application en cours": "Application en cours",
+        "Status": "Status",
         "Niveau du volume": "Niveau du volume"
     },
     "info.json": {

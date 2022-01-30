@@ -37,12 +37,12 @@
         "Rafraichir": "Aktualisieren",
         "Parle": "Sprich",
         "Phrase": "Satz",
-        "Vol+": "Flug +",
-        "Vol-": "Flug-",
         "Volume": "Lautstärke",
+        "Muet status": "Stummschaltungsstatus",
         "Muet": "Stumm",
-        "Statut avec Jeedom": "Status mit Jeedom",
+        "Désactiver muet": "Stummschaltung deaktivieren",
         "Application en cours": "Bewerbung läuft",
+        "Status": "Status",
         "Niveau du volume": "Lautstärke"
     },
     "info.json": {

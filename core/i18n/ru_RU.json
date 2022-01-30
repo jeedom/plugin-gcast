@@ -4,7 +4,7 @@
         "Gestion": "Управление",
         "Ajouter": "Добавить",
         "Santé": "Здоровье",
-        "Mes gcasts": "",
+        "Mes gcasts": "Mes gcasts",
         "Rechercher": "поиск",
         "Configuration avancée": "Расширенные настройки",
         "Dupliquer": "дубликат",
@@ -25,27 +25,27 @@
         "Action": "Действие"
     },
     "plugins\/gcast\/desktop\/js\/gcast.js": {
-        "Santé Xee": "",
+        "Santé Xee": "Santé Xee",
         "Historiser": "История",
         "Tester": "Тест"
     },
     "plugins\/gcast\/core\/php\/gcastApi.php": {
-        "Clef API non valide, vous n\\'êtes pas autorisé à effectuer cette action (gcast)": "",
-        "Id inconnu : ": ""
+        "Clef API non valide, vous n\\'êtes pas autorisé à effectuer cette action (gcast)": "Clef API non valide, vous n\\'êtes pas autorisé à effectuer cette action (gcast)",
+        "Id inconnu : ": "Id inconnu :"
     },
     "plugins\/gcast\/core\/class\/gcast.class.php": {
         "Rafraichir": "Обновить",
         "Parle": "говорит",
         "Phrase": "предложение",
-        "Vol+": "",
-        "Vol-": "",
         "Volume": "Громкость",
-        "Muet": "",
-        "Statut avec Jeedom": "",
-        "Application en cours": "",
-        "Niveau du volume": ""
+        "Muet status": "Muet status",
+        "Muet": "Muet",
+        "Désactiver muet": "Désactiver muet",
+        "Application en cours": "Application en cours",
+        "Status": "Status",
+        "Niveau du volume": "Niveau du volume"
     },
     "info.json": {
-        "Plugin permettant de faire parler un device CAST. Il permet aussi de régler le volume. En usage combiné avec un Google home il permet de faire le pont avec les interactions et d'avoir un retour vocal, il permet aussi d'utiliser la fonction ask.": ""
+        "Plugin permettant de faire parler un device CAST. Il permet aussi de régler le volume. En usage combiné avec un Google home il permet de faire le pont avec les interactions et d'avoir un retour vocal, il permet aussi d'utiliser la fonction ask.": "Plugin permettant de faire parler un device CAST. Il permet aussi de régler le volume. En usage combiné avec un Google home il permet de faire le pont avec les interactions et d'avoir un retour vocal, il permet aussi d'utiliser la fonction ask"
     }
 }
