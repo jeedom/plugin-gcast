@@ -218,7 +218,7 @@ class gcastCmd extends cmd {
 		}
 		$cc = $this->getEqLogic()->getChromecast();
 		if ($this->getLogicalId() == 'parle') {
-			$cc->DMP->play(network::getNetworkAccess('internal') . '/core/api/tts.php?apikey=' . config::byKey('apitts', 'core') . '&text=' . urlencode($_options['message']), "BUFFERED", "audio/mpeg", true, 0);
+			$cc->DMP->play(network::getNetworkAccess('internal') . '/core/api/tts.php?apikey=' . jeedom::getApiKey('apitts') . '&text=' . urlencode($_options['message']), "BUFFERED", "audio/mpeg", true, 0);
 		} else if ($this->getLogicalId() == 'volume') {
 			if ($_options['slider'] < 0) {
 				$_options['slider'] = 0;
