@@ -43,7 +43,8 @@
         "Désactiver muet": "Desativar mudo",
         "Application en cours": "Aplicativo em andamento",
         "Status": "Status",
-        "Niveau du volume": "Nível de volume"
+        "Niveau du volume": "Nível de volume",
+        "Le message ne peut etre vide": "A mensagem não pode estar vazia"
     },
     "info.json": {
         "Plugin permettant de faire parler un device CAST. Il permet aussi de régler le volume. En usage combiné avec un Google home il permet de faire le pont avec les interactions et d'avoir un retour vocal, il permet aussi d'utiliser la fonction ask.": "Plug-in que permite que um dispositivo CAST fale. Também permite ajustar o volume. Quando usado em combinação com uma página inicial do Google, ele permite que você interaja com interações e tenha feedback por voz, além de usar a função de solicitação"
