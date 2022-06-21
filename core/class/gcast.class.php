@@ -221,6 +221,7 @@ class gcastCmd extends cmd {
 			if (trim($_options['message']) == '') {
 				throw new Exception(__('Le message ne peut etre vide', __FILE__));
 			}
+			log::add('gcast', 'error', $_options['message']);
 			$cc->DMP->play(network::getNetworkAccess('internal') . '/core/api/tts.php?apikey=' . jeedom::getApiKey('apitts') . '&text=' . urlencode($_options['message']), "BUFFERED", "audio/mpeg", true, 0);
 		} else if ($this->getLogicalId() == 'volume') {
 			if ($_options['slider'] < 0) {
