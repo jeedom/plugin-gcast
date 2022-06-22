@@ -44,7 +44,7 @@ class gcast extends eqLogic {
 			return new Chromecast($this->getConfiguration('addr'), '8009');
 		} catch (\Exception $e) {
 		}
-		sleep(2);
+		sleep(15);
 		try {
 			return new Chromecast($this->getConfiguration('addr'), '8009');
 		} catch (\Exception $e) {
@@ -55,6 +55,11 @@ class gcast extends eqLogic {
 		} catch (\Exception $e) {
 		}
 		sleep(60);
+		try {
+			return new Chromecast($this->getConfiguration('addr'), '8009');
+		} catch (\Exception $e) {
+		}
+		sleep(120);
 		return new Chromecast($this->getConfiguration('addr'), '8009');
 	}
 
@@ -222,6 +227,11 @@ class gcastCmd extends cmd {
 				throw new Exception(__('Le message ne peut etre vide', __FILE__));
 			}
 			log::add('gcast', 'error', $_options['message']);
+			try {
+				$cc->DMP->play(network::getNetworkAccess('internal') . '/core/api/tts.php?apikey=' . jeedom::getApiKey('apitts') . '&text=' . urlencode($_options['message']), "BUFFERED", "audio/mpeg", true, 0);
+			} catch (\Exception $e) {
+			}
+			sleep(15);
 			$cc->DMP->play(network::getNetworkAccess('internal') . '/core/api/tts.php?apikey=' . jeedom::getApiKey('apitts') . '&text=' . urlencode($_options['message']), "BUFFERED", "audio/mpeg", true, 0);
 		} else if ($this->getLogicalId() == 'volume') {
 			if ($_options['slider'] < 0) {
