@@ -223,8 +223,8 @@ class gcastCmd extends cmd {
 		}
 		$cc = $this->getEqLogic()->getChromecast();
 		if ($this->getLogicalId() == 'parle') {
-			if (trim($_options['message']) == '') {
-				throw new Exception(__('Le message ne peut etre vide', __FILE__));
+			if (!is_array($_options) || isset($_options['message']) || trim($_options['message']) == '') {
+				return;
 			}
 			try {
 				$cc->DMP->play(network::getNetworkAccess('internal') . '/core/api/tts.php?apikey=' . jeedom::getApiKey('apitts') . '&text=' . urlencode($_options['message']), "BUFFERED", "audio/mpeg", true, 0);
