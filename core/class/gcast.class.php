@@ -229,9 +229,9 @@ class gcastCmd extends cmd {
 			try {
 				$cc->DMP->play(network::getNetworkAccess('internal') . '/core/api/tts.php?apikey=' . jeedom::getApiKey('apitts') . '&text=' . urlencode($_options['message']), "BUFFERED", "audio/mpeg", true, 0);
 			} catch (\Exception $e) {
+				log::add('gcast', 'error', __('Erreur sur la commande : ', __FILE__) . $this->getHumanName() . '  => ' . json_encode($_options) . ' ' . $e->getMessage());
+				throw $e;
 			}
-			sleep(15);
-			$cc->DMP->play(network::getNetworkAccess('internal') . '/core/api/tts.php?apikey=' . jeedom::getApiKey('apitts') . '&text=' . urlencode($_options['message']), "BUFFERED", "audio/mpeg", true, 0);
 		} else if ($this->getLogicalId() == 'volume') {
 			if ($_options['slider'] < 0) {
 				$_options['slider'] = 0;
