@@ -223,7 +223,7 @@ class gcastCmd extends cmd {
 		}
 		$cc = $this->getEqLogic()->getChromecast();
 		if ($this->getLogicalId() == 'parle') {
-			if (!is_array($_options) || isset($_options['message']) || trim($_options['message']) == '') {
+			if (!is_array($_options) || !isset($_options['message']) || trim($_options['message']) == '') {
 				return;
 			}
 			try {
