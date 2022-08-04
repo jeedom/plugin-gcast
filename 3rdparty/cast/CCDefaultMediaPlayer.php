@@ -16,7 +16,9 @@ class CCDefaultMediaPlayer extends CCBaseSender {
 		$r = "";
 		while (!preg_match("/\"playerState\":\"PLAYING\"/", $r)) {
 			$r = $this->chromecast->getCastMessage();
-			print_r($r);
+			if (!preg_match("/\"LOAD_FAILED\"/", $r)) {
+				throw new Exception('Error can not load playing file : ' . $r);
+			}
 			sleep(1);
 		}
 		// Grab the mediaSessionId
