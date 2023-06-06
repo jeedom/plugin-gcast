@@ -43,7 +43,8 @@
         "Désactiver muet": "Stummschaltung deaktivieren",
         "Application en cours": "Bewerbung läuft",
         "Status": "Status",
-        "Niveau du volume": "Lautstärke"
+        "Niveau du volume": "Lautstärke",
+        "Erreur sur la commande : ": "Fehler beim Befehl:"
     },
     "info.json": {
         "Plugin permettant de faire parler un device CAST. Il permet aussi de régler le volume. En usage combiné avec un Google home il permet de faire le pont avec les interactions et d'avoir un retour vocal, il permet aussi d'utiliser la fonction ask.": "Plugin, mit dem ein CAST-Gerät sprechen kann. Sie können damit auch die Lautstärke einstellen. In Kombination mit einer Google-Startseite können Sie Interaktionen überbrücken und Sprachfeedback erhalten. Außerdem können Sie die Ask-Funktion verwenden"

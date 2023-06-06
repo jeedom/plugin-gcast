@@ -44,7 +44,7 @@ class gcast extends eqLogic {
 			return new Chromecast($this->getConfiguration('addr'), '8009');
 		} catch (\Exception $e) {
 		}
-		sleep(2);
+		sleep(15);
 		try {
 			return new Chromecast($this->getConfiguration('addr'), '8009');
 		} catch (\Exception $e) {
@@ -55,6 +55,11 @@ class gcast extends eqLogic {
 		} catch (\Exception $e) {
 		}
 		sleep(60);
+		try {
+			return new Chromecast($this->getConfiguration('addr'), '8009');
+		} catch (\Exception $e) {
+		}
+		sleep(120);
 		return new Chromecast($this->getConfiguration('addr'), '8009');
 	}
 
@@ -78,8 +83,12 @@ class gcast extends eqLogic {
 		if (!is_array($status) || count($status) == 0) {
 			return;
 		}
-		$this->checkAndUpdateCmd('volume_lvl', $status['status']['volume']['level'] * 100);
-		$this->checkAndUpdateCmd('mute_state', $status['status']['volume']['muted']);
+		if (isset($status['status']['volume']['level'])) {
+			$this->checkAndUpdateCmd('volume_lvl', $status['status']['volume']['level'] * 100);
+		}
+		if (isset($status['status']['volume']['muted'])) {
+			$this->checkAndUpdateCmd('mute_state', $status['status']['volume']['muted']);
+		}
 		if (isset($status['status']['applications']) && isset($status['status']['applications'][0])) {
 			$this->checkAndUpdateCmd('application', $status['status']['applications'][0]['displayName']);
 			$this->checkAndUpdateCmd('status', $status['status']['applications'][0]['statusText']);
@@ -218,7 +227,15 @@ class gcastCmd extends cmd {
 		}
 		$cc = $this->getEqLogic()->getChromecast();
 		if ($this->getLogicalId() == 'parle') {
-			$cc->DMP->play(network::getNetworkAccess('internal') . '/core/api/tts.php?apikey=' . jeedom::getApiKey('apitts') . '&text=' . urlencode($_options['message']), "BUFFERED", "audio/mpeg", true, 0);
+			if (!is_array($_options) || !isset($_options['message']) || trim($_options['message']) == '') {
+				return;
+			}
+			try {
+				$cc->DMP->play(network::getNetworkAccess('internal') . '/core/api/tts.php?apikey=' . jeedom::getApiKey('apitts') . '&text=' . urlencode($_options['message']), "BUFFERED", "audio/mpeg", true, 0);
+			} catch (\Exception $e) {
+				log::add('gcast', 'error', __('Erreur sur la commande : ', __FILE__) . $this->getHumanName() . '  => ' . json_encode($_options) . ' ' . $e->getMessage());
+				throw $e;
+			}
 		} else if ($this->getLogicalId() == 'volume') {
 			if ($_options['slider'] < 0) {
 				$_options['slider'] = 0;

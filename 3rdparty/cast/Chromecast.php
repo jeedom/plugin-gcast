@@ -1,15 +1,14 @@
 <?php
 // Chris Ridings
 // www.chrisridings.com
-require_once ("CCprotoBuf.php");
-require_once ("CCDefaultMediaPlayer.php");
-require_once ("CCPlexPlayer.php");
+require_once("CCprotoBuf.php");
+require_once("CCDefaultMediaPlayer.php");
+require_once("CCPlexPlayer.php");
 if (!class_exists('mdns')) {
-	require_once ("mdns.php");
+	require_once("mdns.php");
 }
 
-class Chromecast
-{
+class Chromecast {
 	// Sends a picture or a video to a Chromecast using reverse
 	// engineered castV2 protocol
 	public $socket;
@@ -30,18 +29,16 @@ class Chromecast
 	// Store the last connected port
 	public $lastactivetime;
 	// store the time we last did something
-	
-	public function __construct($ip, $port)
-	{
+
+	public function __construct($ip, $port) {
 		// Establish Chromecast connection
 		// Don't pay much attention to the Chromecast's certificate.
 		// It'll be for the wrong host address anyway if we
 		// use port forwarding!
-		$contextOptions = ['ssl' => ['verify_peer' => false, 'verify_peer_name' => false, ]];
+		$contextOptions = ['ssl' => ['verify_peer' => false, 'verify_peer_name' => false,]];
 		$context = stream_context_create($contextOptions);
 		if ($this->socket = stream_socket_client('ssl://' . $ip . ":" . $port, $errno, $errstr, 30, STREAM_CLIENT_CONNECT, $context)) {
-		}
-		else {
+		} else {
 			throw new Exception("Failed to connect to remote Chromecast");
 		}
 		$this->lastip = $ip;
@@ -50,23 +47,21 @@ class Chromecast
 		$this->DMP = new CCDefaultMediaPlayer($this);
 		$this->Plex = new CCPlexPlayer($this);
 	}
-	
-	public static function scan($wait = 15)
-	{
+
+	public static function scan($wait = 15) {
 		// Wrapper for scan
 		$result = Chromecast::scansub($wait);
 		return $result;
 	}
-	
-	public static function scansub($wait = 15)
-	{
+
+	public static function scansub($wait = 15) {
 		// Performs an mdns scan of the network to find chromecasts and returns an array
 		// Let's test by finding Google Chromecasts
 		$mdns = new mDNS();
 		// Search for chromecast devices
 		// For a bit more surety, send multiple search requests
-		$firstresponsetime = - 1;
-		$lastpackettime = - 1;
+		$firstresponsetime = -1;
+		$lastpackettime = -1;
 		$starttime = round(microtime(true) * 1000);
 		$mdns->query("_googlecast._tcp.local", 1, 12, "");
 		$mdns->query("_googlecast._tcp.local", 1, 12, "");
@@ -85,10 +80,10 @@ class Chromecast
 						$inpacket = "";
 					}
 				}
-				if ($lastpackettime <> - 1) {
+				if ($lastpackettime <> -1) {
 					// If we get to here then we have a valid last packet time
 					$timesincelastpacket = round(microtime(true) * 1000) - $lastpackettime;
-					if ($timesincelastpacket > ($firstresponsetime * 5) && $firstresponsetime != - 1) {
+					if ($timesincelastpacket > ($firstresponsetime * 5) && $firstresponsetime != -1) {
 						return $chromecasts;
 					}
 				}
@@ -110,12 +105,12 @@ class Chromecast
 					if ($inpacket->answerrrs[$x]->qtype == 12) {
 						// print_r($inpacket->answerrrs[$x]);
 						if ($inpacket->answerrrs[$x]->name == "_googlecast._tcp.local") {
-							if ($firstresponsetime == - 1) {
+							if ($firstresponsetime == -1) {
 								$firstresponsetime = round(microtime(true) * 1000) - $starttime;
 							}
 							$name = "";
 							for ($y = 0; $y < sizeof($inpacket->answerrrs[$x]->data); $y++) {
-								$name.= chr($inpacket->answerrrs[$x]->data[$y]);
+								$name .= chr($inpacket->answerrrs[$x]->data[$y]);
 							}
 							// The chromecast itself fills in additional rrs. So if that's there then we have a quicker method of
 							// processing the results.
@@ -130,9 +125,9 @@ class Chromecast
 									$offset++;
 									$target = "";
 									for ($z = 0; $z < $size; $z++) {
-										$target.= chr($d[$offset + $z]);
+										$target .= chr($d[$offset + $z]);
 									}
-									$target.= ".local";
+									$target .= ".local";
 									if (!isset($chromecasts[$inpacket->additionalrrs[$p]->name])) {
 										$chromecasts[$inpacket->additionalrrs[$x]->name] = array(
 											"port" => $port,
@@ -149,7 +144,7 @@ class Chromecast
 								if ($inpacket->additionalrrs[$p]->qtype == 16) {
 									$fn = "";
 									for ($q = 0; $q < sizeof($inpacket->additionalrrs[$p]->data); $q++) {
-										$fn.= chr($inpacket->additionalrrs[$p]->data[$q]);
+										$fn .= chr($inpacket->additionalrrs[$p]->data[$q]);
 									}
 									$stp = strpos($fn, "fn=") + 3;
 									$etp = strpos($fn, "ca=");
@@ -170,7 +165,7 @@ class Chromecast
 								if ($inpacket->additionalrrs[$p]->qtype == 1) {
 									$d = $inpacket->additionalrrs[$p]->data;
 									$ip = $d[0] . "." . $d[1] . "." . $d[2] . "." . $d[3];
-									foreach($chromecasts as $key => $value) {
+									foreach ($chromecasts as $key => $value) {
 										if ($value['target'] == $inpacket->additionalrrs[$p]->name) {
 											$value['ip'] = $ip;
 											$chromecasts[$key] = $value;
@@ -198,8 +193,7 @@ class Chromecast
 									$mdns->query($xx['target'], 1, 1, "");
 									$dontrequery = 0;
 								}
-							}
-							else {
+							} else {
 								// Send queries. These'll trigger a 1 query when we have a target name.
 								$mdns->query($name, 1, 33, "");
 								$mdns->query($name, 1, 16, "");
@@ -220,9 +214,9 @@ class Chromecast
 						$offset++;
 						$target = "";
 						for ($z = 0; $z < $size; $z++) {
-							$target.= chr($d[$offset + $z]);
+							$target .= chr($d[$offset + $z]);
 						}
-						$target.= ".local";
+						$target .= ".local";
 						if (!isset($chromecasts[$inpacket->answerrrs[$x]->name])) {
 							$chromecasts[$inpacket->answerrrs[$x]->name] = array(
 								"port" => $port,
@@ -230,8 +224,7 @@ class Chromecast
 								"target" => $target,
 								"friendlyname" => ""
 							);
-						}
-						else {
+						} else {
 							$chromecasts[$inpacket->answerrrs[$x]->name]['target'] = $target;
 						}
 						// We know the name and port. Send an A query for the IP address
@@ -242,7 +235,7 @@ class Chromecast
 					if ($inpacket->answerrrs[$x]->qtype == 16) {
 						$fn = "";
 						for ($q = 0; $q < sizeof($inpacket->answerrrs[$x]->data); $q++) {
-							$fn.= chr($inpacket->answerrrs[$x]->data[$q]);
+							$fn .= chr($inpacket->answerrrs[$x]->data[$q]);
 						}
 						$stp = strpos($fn, "fn=") + 3;
 						$etp = strpos($fn, "ca=");
@@ -254,8 +247,7 @@ class Chromecast
 								"target" => "",
 								"friendlyname" => $fn
 							);
-						}
-						else {
+						} else {
 							$chromecasts[$inpacket->answerrrs[$x]->name]['friendlyname'] = $fn;
 						}
 						$mdns->query($chromecasts[$inpacket->answerrrs[$x]->name]['target'], 1, 1, "");
@@ -266,7 +258,7 @@ class Chromecast
 						$d = $inpacket->answerrrs[$x]->data;
 						$ip = $d[0] . "." . $d[1] . "." . $d[2] . "." . $d[3];
 						// Loop through the chromecasts and fill in the ip
-						foreach($chromecasts as $key => $value) {
+						foreach ($chromecasts as $key => $value) {
 							if ($value['target'] == $inpacket->answerrrs[$x]->name) {
 								$value['ip'] = $ip;
 								$chromecasts[$key] = $value;
@@ -285,11 +277,10 @@ class Chromecast
 		}
 		return $chromecasts;
 	}
-	
-	
-	
-	function testLive()
-	{
+
+
+
+	function testLive() {
 		// If there is a difference of 10 seconds or more between $this->lastactivetime and the current time, then we've been kicked off and need to reconnect
 		if ($this->lastip == "") {
 			return;
@@ -297,20 +288,18 @@ class Chromecast
 		$diff = time() - $this->lastactivetime;
 		if ($diff > 9) {
 			// Reconnect
-			$contextOptions = ['ssl' => ['verify_peer' => false, 'verify_peer_name' => false, ]];
+			$contextOptions = ['ssl' => ['verify_peer' => false, 'verify_peer_name' => false,]];
 			$context = stream_context_create($contextOptions);
 			if ($this->socket = stream_socket_client('ssl://' . $this->lastip . ":" . $this->lastport, $errno, $errstr, 30, STREAM_CLIENT_CONNECT, $context)) {
-			}
-			else {
+			} else {
 				throw new Exception("Failed to connect to remote Chromecast");
 			}
 			$this->cc_connect(1);
 			$this->connect(1);
 		}
 	}
-	
-	function cc_connect($tl = 0)
-	{
+
+	function cc_connect($tl = 0) {
 		// CONNECT TO CHROMECAST
 		// This connects to the chromecast in general.
 		// Generally this is called by launch($appid) automatically upon launching an app
@@ -329,9 +318,8 @@ class Chromecast
 		fflush($this->socket);
 		$this->lastactivetime = time();
 	}
-	
-	public function launch($appid)
-	{
+
+	public function launch($appid) {
 		// Launches the chromecast app on the connected chromecast
 		// CONNECT
 		$this->cc_connect();
@@ -352,15 +340,14 @@ class Chromecast
 			$r = $this->getCastMessage();
 			sleep(1);
 			$i++;
-			if($i>30){
+			if ($i > 30) {
 				throw new \Exception("Unable to launch application");
 			}
 		}
 		return $r;
 	}
-	
-	function getStatus()
-	{
+
+	function getStatus() {
 		// Get the status of the chromecast in general and return it
 		// also fills in the transportId of any currently running app
 		$this->testLive();
@@ -378,9 +365,8 @@ class Chromecast
 		$r = $this->getCastMessage();
 		return $r;
 	}
-	
-	function connect($tl = 0)
-	{
+
+	function connect($tl = 0) {
 		// This connects to the transport of the currently running app
 		// (you need to have launched it yourself or connected and got the status)
 		if ($tl == 0) {
@@ -397,9 +383,8 @@ class Chromecast
 		$this->lastactivetime = time();
 		$this->requestId++;
 	}
-	
-	public function getCastMessage()
-	{
+
+	public function getCastMessage() {
 		// Get the Chromecast Message/Response
 		// Later on we could update CCprotoBuf to decode this
 		// but for now all we need is the transport id  and session id if it is
@@ -409,9 +394,9 @@ class Chromecast
 		$i = 0;
 		while (preg_match("/urn:x-cast:com.google.cast.tp.heartbeat/", $response) && preg_match("/\"PING\"/", $response)) {
 			$this->pong();
-			sleep(3);
+			sleep(1);
 			$response = fread($this->socket, 2000);
-			if($i>5){
+			if ($i > 5) {
 				break;
 			}
 		}
@@ -426,9 +411,8 @@ class Chromecast
 		}
 		return $response;
 	}
-	
-	public function sendMessage($urn, $message)
-	{
+
+	public function sendMessage($urn, $message) {
 		// Send the given message to the given urn
 		$this->testLive();
 		$c = new CastMessage();
@@ -452,9 +436,8 @@ class Chromecast
 		$response = $this->getCastMessage();
 		return $response;
 	}
-	
-	public function pingpong()
-	{
+
+	public function pingpong() {
 		// Officially you should run this every 5 seconds or so to keep
 		// the device alive. Doesn't seem to be necessary if an app is running
 		// that doesn't have a short timeout.
@@ -470,9 +453,8 @@ class Chromecast
 		$this->requestId++;
 		$response = $this->getCastMessage();
 	}
-	
-	public function pong()
-	{
+
+	public function pong() {
 		// To answer a pingpong
 		$c = new CastMessage();
 		$c->source_id = "sender-0";
