@@ -50,7 +50,8 @@ class CCDefaultMediaPlayer extends CCBaseSender {
 	public function stop() {
 		// Stop
 		$this->launch(); // Auto-reconnects
-		$this->chromecast->sendMessage("urn:x-cast:com.google.cast.media", '{"type":"STOP", "mediaSessionId":' . $this->mediaid . ', "requestId":1}');
+		//$this->chromecast->sendMessage("urn:x-cast:com.google.cast.media", '{"type":"STOP", "mediaSessionId":' . $this->mediaid . ', "requestId":1}');
+		$this->chromecast->sendMessage("urn:x-cast:com.google.cast.receiver", '{"type":"STOP", "requestId":1}');
 		$this->chromecast->getCastMessage();
 	}
 
