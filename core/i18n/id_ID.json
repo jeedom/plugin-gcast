@@ -44,6 +44,7 @@
         "Application en cours": "Application en cours",
         "Status": "Status",
         "Niveau du volume": "Niveau du volume",
+        "Stop": "Stop",
         "Erreur sur la commande : ": "Erreur sur la commande :"
     },
     "info.json": {

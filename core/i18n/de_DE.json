@@ -44,6 +44,7 @@
         "Application en cours": "Bewerbung läuft",
         "Status": "Status",
         "Niveau du volume": "Lautstärke",
+        "Stop": "Stoppen",
         "Erreur sur la commande : ": "Fehler beim Befehl:"
     },
     "info.json": {

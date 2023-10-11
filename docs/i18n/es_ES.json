@@ -2,6 +2,7 @@
     "changelog.md": {
         "Changelog Gcast": "Registro de cambios Gcast",
         "Pour rappel s'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte": "Como recordatorio si no hay información sobre la actualización, significa que solo se refiere a la actualización de documentación, traducción o texto",
+        "Ajout d'une commande stop": "Agregar un comando de parada",
         "06\/06\/2023": "06\/06\/2023",
         "Refonte majeur du plugin": "Revisión importante del complemento",
         "Passage du python a PHP (plus rapide": "Cambiar de Python a PHP (más rápido",

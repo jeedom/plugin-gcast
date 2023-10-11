@@ -44,6 +44,7 @@
         "Application en cours": "Solicitud en progreso",
         "Status": "Estado",
         "Niveau du volume": "Nivel de volumen",
+        "Stop": "Detener",
         "Erreur sur la commande : ": "Error en el comando:"
     },
     "info.json": {
