@@ -209,6 +209,18 @@ class gcast extends eqLogic {
 		$cmd->setSubType('numeric');
 		$cmd->setEqLogic_id($this->getId());
 		$cmd->save();
+
+		$cmd = $this->getCmd(null, 'stop');
+		if (!is_object($cmd)) {
+			$cmd = new gcastcmd();
+			$cmd->setLogicalId('stop');
+			$cmd->setIsVisible(1);
+			$cmd->setName(__('Stop', __FILE__));
+		}
+		$cmd->setType('action');
+		$cmd->setSubType('other');
+		$cmd->setEqLogic_id($this->getId());
+		$cmd->save();
 	}
 
 	/*     * **********************Getteur Setteur*************************** */
@@ -247,6 +259,8 @@ class gcastCmd extends cmd {
 			$cc->DMP->Mute();
 		} else if ($this->getLogicalId() == 'unmute') {
 			$cc->DMP->UnMute();
+		} else if ($this->getLogicalId() == 'stop') {
+			$cc->DMP->stop();
 		}
 		$this->getEqLogic()->updateData();
 	}

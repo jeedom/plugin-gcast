@@ -44,6 +44,7 @@
         "Application en cours": "Aplicativo em andamento",
         "Status": "Status",
         "Niveau du volume": "Nível de volume",
+        "Stop": "Parar",
         "Erreur sur la commande : ": "Erro no comando:"
     },
     "info.json": {
