@@ -44,22 +44,22 @@ class gcast extends eqLogic {
 			return new Chromecast($this->getConfiguration('addr'), '8009');
 		} catch (\Exception $e) {
 		}
-		sleep(15);
+		sleep(5);
 		try {
 			return new Chromecast($this->getConfiguration('addr'), '8009');
 		} catch (\Exception $e) {
 		}
-		sleep(30);
+		sleep(10);
 		try {
 			return new Chromecast($this->getConfiguration('addr'), '8009');
 		} catch (\Exception $e) {
 		}
-		sleep(60);
+		sleep(20);
 		try {
 			return new Chromecast($this->getConfiguration('addr'), '8009');
 		} catch (\Exception $e) {
 		}
-		sleep(120);
+		sleep(40);
 		return new Chromecast($this->getConfiguration('addr'), '8009');
 	}
 
@@ -72,8 +72,13 @@ class gcast extends eqLogic {
 			try {
 				$cc->cc_connect();
 			} catch (\Exception $e) {
-				sleep(5);
-				$cc->cc_connect();
+				sleep(4);
+				try {
+					$cc->cc_connect();
+				} catch (\Exception $e) {
+					sleep(8);
+					$cc->cc_connect();
+				}
 			}
 		}
 		preg_match_all('/\{.*?\}$/m', $cc->getStatus(), $matches);
